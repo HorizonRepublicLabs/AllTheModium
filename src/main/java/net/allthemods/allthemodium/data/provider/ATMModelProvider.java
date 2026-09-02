@@ -16,6 +16,7 @@ import net.minecraft.client.data.models.model.TextureSlot;
 import net.minecraft.client.data.models.model.TexturedModel;
 import net.minecraft.client.renderer.item.SelectItemModel;
 import net.minecraft.client.resources.model.sprite.Material;
+import net.minecraft.client.resources.model.sprite.Material;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
@@ -27,6 +28,7 @@ import net.minecraft.world.item.HoeItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.MaceItem;
 import net.minecraft.world.item.ShieldItem;
+import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.item.ShovelItem;
 import net.minecraft.world.item.TridentItem;
 import net.minecraft.world.item.equipment.EquipmentAsset;
@@ -209,6 +211,19 @@ public final class ATMModelProvider extends ModelProvider {
                                         ItemModelUtils.isUsingItem(),
                                         ItemModelUtils.plainModel(ModelLocationUtils.getModelLocation(item, "_throwing")),
                                         ItemModelUtils.plainModel(ModelLocationUtils.getModelLocation(item, "_in_hand"))
+                                )
+                        )
+                );
+            } else if (item instanceof SpawnEggItem) {
+                // 26.2 dropped the tinted template_spawn_egg model, so every spawn egg needs its own
+                // texture. Borrow the closest vanilla one until Piglich art exists.
+                itemModels.itemModelOutput.accept(
+                        item,
+                        ItemModelUtils.plainModel(
+                                ModelTemplates.FLAT_ITEM.create(
+                                        ModelLocationUtils.getModelLocation(item),
+                                        TextureMapping.layer0(new Material(Identifier.withDefaultNamespace("item/zombified_piglin_spawn_egg"))),
+                                        itemModels.modelOutput
                                 )
                         )
                 );
