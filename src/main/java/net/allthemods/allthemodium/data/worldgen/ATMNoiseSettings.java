@@ -5,6 +5,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Climate;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.DensityFunction;
@@ -30,6 +31,7 @@ public class ATMNoiseSettings {
     private static final int ISLAND_HEIGHT = 256;
 
     public static void bootstrap(final BootstrapContext<NoiseGeneratorSettings> ctx) {
+        HolderGetter<Biome> biomes = ctx.lookup(Registries.BIOME);
         HolderGetter<DensityFunction> functions = ctx.lookup(Registries.DENSITY_FUNCTION);
         HolderGetter<NormalNoise.NoiseParameters> noises = ctx.lookup(Registries.NOISE);
 
@@ -38,7 +40,7 @@ public class ATMNoiseSettings {
                 ATMBlocks.ANCIENT_STONE.get().defaultBlockState(),
                 Blocks.AIR.defaultBlockState(),
                 ATMNoiseSettings.router(functions, noises),
-                ATMNoiseSettings.surfaceRule(),
+                ATMNoiseSettings.surfaceRule(biomes),
                 ATMNoiseSettings.spawnTarget(),
                 63,
                 false,
@@ -88,18 +90,18 @@ public class ATMNoiseSettings {
         return DensityFunctions.lerp(bottomFactor, bottomTarget, withTop);
     }
 
-    private static SurfaceRules.RuleSource surfaceRule() {
+    private static SurfaceRules.RuleSource surfaceRule(HolderGetter<Biome> biomes) {
         SurfaceRules.RuleSource surface = SurfaceRules.sequence(
-                SurfaceRules.ifTrue(SurfaceRules.isBiome(ATMBiomes.SOUL_SAND_VALLEY), SurfaceRules.state(Blocks.SOUL_SAND.defaultBlockState())),
-                SurfaceRules.ifTrue(SurfaceRules.isBiome(ATMBiomes.CRIMSON_FOREST), SurfaceRules.state(Blocks.CRIMSON_NYLIUM.defaultBlockState())),
-                SurfaceRules.ifTrue(SurfaceRules.isBiome(ATMBiomes.WARPED_FOREST), SurfaceRules.state(Blocks.WARPED_NYLIUM.defaultBlockState())),
-                SurfaceRules.ifTrue(SurfaceRules.isBiome(ATMBiomes.DESERT, ATMBiomes.DESERT_HILLS), SurfaceRules.state(Blocks.SAND.defaultBlockState())),
-                SurfaceRules.ifTrue(SurfaceRules.isBiome(ATMBiomes.THE_OTHER), SurfaceRules.state(ATMBlocks.ANCIENT_GRASS.get().defaultBlockState()))
+                SurfaceRules.ifTrue(SurfaceRules.isBiome(biomes, ATMBiomes.SOUL_SAND_VALLEY), SurfaceRules.state(Blocks.SOUL_SAND.defaultBlockState())),
+                SurfaceRules.ifTrue(SurfaceRules.isBiome(biomes, ATMBiomes.CRIMSON_FOREST), SurfaceRules.state(Blocks.CRIMSON_NYLIUM.defaultBlockState())),
+                SurfaceRules.ifTrue(SurfaceRules.isBiome(biomes, ATMBiomes.WARPED_FOREST), SurfaceRules.state(Blocks.WARPED_NYLIUM.defaultBlockState())),
+                SurfaceRules.ifTrue(SurfaceRules.isBiome(biomes, ATMBiomes.DESERT, ATMBiomes.DESERT_HILLS), SurfaceRules.state(Blocks.SAND.defaultBlockState())),
+                SurfaceRules.ifTrue(SurfaceRules.isBiome(biomes, ATMBiomes.THE_OTHER), SurfaceRules.state(ATMBlocks.ANCIENT_GRASS.get().defaultBlockState()))
         );
         SurfaceRules.RuleSource subsurface = SurfaceRules.sequence(
-                SurfaceRules.ifTrue(SurfaceRules.isBiome(ATMBiomes.SOUL_SAND_VALLEY), SurfaceRules.state(Blocks.SOUL_SOIL.defaultBlockState())),
-                SurfaceRules.ifTrue(SurfaceRules.isBiome(ATMBiomes.DESERT, ATMBiomes.DESERT_HILLS), SurfaceRules.state(Blocks.SANDSTONE.defaultBlockState())),
-                SurfaceRules.ifTrue(SurfaceRules.isBiome(ATMBiomes.CRIMSON_FOREST, ATMBiomes.WARPED_FOREST, ATMBiomes.THE_OTHER), SurfaceRules.state(ATMBlocks.ANCIENT_DIRT.get().defaultBlockState()))
+                SurfaceRules.ifTrue(SurfaceRules.isBiome(biomes, ATMBiomes.SOUL_SAND_VALLEY), SurfaceRules.state(Blocks.SOUL_SOIL.defaultBlockState())),
+                SurfaceRules.ifTrue(SurfaceRules.isBiome(biomes, ATMBiomes.DESERT, ATMBiomes.DESERT_HILLS), SurfaceRules.state(Blocks.SANDSTONE.defaultBlockState())),
+                SurfaceRules.ifTrue(SurfaceRules.isBiome(biomes, ATMBiomes.CRIMSON_FOREST, ATMBiomes.WARPED_FOREST, ATMBiomes.THE_OTHER), SurfaceRules.state(ATMBlocks.ANCIENT_DIRT.get().defaultBlockState()))
         );
         return SurfaceRules.sequence(
                 SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(-2, true, 2, CaveSurface.FLOOR), surface),

@@ -232,7 +232,8 @@ public class ATMConfiguredFeatures {
                                 .setValue(LeavesBlock.WATERLOGGED, false)
                         ),
                         new AcaciaFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0)),
-                        new TwoLayersFeatureSize(1, 0, 2)
+                        new TwoLayersFeatureSize(1, 0, 2),
+                        TreeConfiguration.defaultPlaceBelowTreeTrunkProvider(ctx.lookup(Registries.BIOME))
                 ).ignoreVines().build()
         );
         ATMConfiguredFeatures.register(
@@ -240,6 +241,7 @@ public class ATMConfiguredFeatures {
                 ATMConfiguredFeatures.SOUL_TREE,
                 Feature.TREE,
                 ATMConfiguredFeatures.fancyTree(
+                        ctx,
                         new WeightedStateProvider(WeightedList.<BlockState>builder()
                                 .add(ATMBlocks.SOUL_LOG_0.get().defaultBlockState().setValue(RotatedPillarBlock.AXIS, Direction.Axis.Y), 10)
                                 .add(ATMBlocks.SOUL_LOG_1.get().defaultBlockState().setValue(RotatedPillarBlock.AXIS, Direction.Axis.Y), 10)
@@ -254,6 +256,7 @@ public class ATMConfiguredFeatures {
                 ATMConfiguredFeatures.DEMONIC_TREE,
                 Feature.TREE,
                 ATMConfiguredFeatures.fancyTree(
+                        ctx,
                         BlockStateProvider.simple(ATMBlocks.DEMONIC_LOG.get().defaultBlockState().setValue(RotatedPillarBlock.AXIS, Direction.Axis.Y)),
                         ATMBlocks.DEMONIC_LEAVES.get().defaultBlockState().setValue(LeavesBlock.DISTANCE, 7).setValue(LeavesBlock.PERSISTENT, false)
                 ));
@@ -294,13 +297,14 @@ public class ATMConfiguredFeatures {
         ));
     }
     
-    private static TreeConfiguration fancyTree(BlockStateProvider provider, BlockState leaves) {
+    private static TreeConfiguration fancyTree(BootstrapContext<ConfiguredFeature<?, ?>> ctx, BlockStateProvider provider, BlockState leaves) {
         return new TreeConfiguration.TreeConfigurationBuilder(
                 provider,
                 new FancyTrunkPlacer(3, 11, 0),
                 BlockStateProvider.simple(leaves),
                 new FancyFoliagePlacer(ConstantInt.of(2), ConstantInt.of(4), 4),
-                new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4))
+                new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4)),
+                TreeConfiguration.defaultPlaceBelowTreeTrunkProvider(ctx.lookup(Registries.BIOME))
         ).ignoreVines().build();
     }
     

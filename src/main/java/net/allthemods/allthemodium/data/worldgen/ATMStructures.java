@@ -6,6 +6,7 @@ import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.random.WeightedList;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EntityTypes;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.MobSpawnSettings;
@@ -70,7 +71,7 @@ public class ATMStructures {
                         .spawnOverrides(Map.of(MobCategory.MONSTER, new StructureSpawnOverride(
                                 StructureSpawnOverride.BoundingBoxType.PIECE,
                                 WeightedList.<MobSpawnSettings.SpawnerData>builder()
-                                        .add(new MobSpawnSettings.SpawnerData(EntityType.PIGLIN, 5, 10), 200)
+                                        .add(new MobSpawnSettings.SpawnerData(EntityTypes.PIGLIN, 5, 10), 200)
                                         .build()
                         )))
                         .generationStep(GenerationStep.Decoration.UNDERGROUND_STRUCTURES)

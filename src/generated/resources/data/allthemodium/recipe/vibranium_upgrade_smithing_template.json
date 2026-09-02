@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "key": {
     "#": "allthemodium:allthemodium_ingot",
     "C": "allthemodium:ancient_stone",

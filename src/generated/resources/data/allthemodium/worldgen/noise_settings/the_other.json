@@ -167,9 +167,7 @@
               "type": "minecraft:condition",
               "if_true": {
                 "type": "minecraft:biome",
-                "biome_is": [
-                  "allthemodium:soul_sand_valley"
-                ]
+                "biome_is": "allthemodium:soul_sand_valley"
               },
               "then_run": {
                 "type": "minecraft:block",
@@ -182,9 +180,7 @@
               "type": "minecraft:condition",
               "if_true": {
                 "type": "minecraft:biome",
-                "biome_is": [
-                  "allthemodium:crimson_forest"
-                ]
+                "biome_is": "allthemodium:crimson_forest"
               },
               "then_run": {
                 "type": "minecraft:block",
@@ -197,9 +193,7 @@
               "type": "minecraft:condition",
               "if_true": {
                 "type": "minecraft:biome",
-                "biome_is": [
-                  "allthemodium:warped_forest"
-                ]
+                "biome_is": "allthemodium:warped_forest"
               },
               "then_run": {
                 "type": "minecraft:block",
@@ -228,9 +222,7 @@
               "type": "minecraft:condition",
               "if_true": {
                 "type": "minecraft:biome",
-                "biome_is": [
-                  "allthemodium:the_other"
-                ]
+                "biome_is": "allthemodium:the_other"
               },
               "then_run": {
                 "type": "minecraft:block",
@@ -261,9 +253,7 @@
               "type": "minecraft:condition",
               "if_true": {
                 "type": "minecraft:biome",
-                "biome_is": [
-                  "allthemodium:soul_sand_valley"
-                ]
+                "biome_is": "allthemodium:soul_sand_valley"
               },
               "then_run": {
                 "type": "minecraft:block",

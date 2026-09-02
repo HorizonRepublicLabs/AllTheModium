@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shapeless",
-  "category": "misc",
   "group": "allthemodium",
   "ingredients": [
     "#allthemodium:smooth_ancient_stone",

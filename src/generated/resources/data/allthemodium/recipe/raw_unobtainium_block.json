@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "group": "allthemodium",
   "key": {
     "a": "#c:raw_materials/unobtainium"

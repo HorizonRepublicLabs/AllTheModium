@@ -35,7 +35,7 @@
                   "condition": "minecraft:entity_properties",
                   "entity": "this",
                   "predicate": {
-                    "type": "minecraft:trident"
+                    "minecraft:entity_type": "minecraft:trident"
                   }
                 },
                 {
@@ -53,7 +53,7 @@
               "condition": "minecraft:entity_properties",
               "entity": "this",
               "predicate": {
-                "type": "allthemodium:alloy_trident"
+                "minecraft:entity_type": "allthemodium:alloy_trident"
               }
             }
           ]
@@ -93,7 +93,7 @@
                   "condition": "minecraft:entity_properties",
                   "entity": "this",
                   "predicate": {
-                    "location": {
+                    "minecraft:location": {
                       "can_see_sky": true
                     }
                   }
@@ -102,7 +102,7 @@
                   "condition": "minecraft:entity_properties",
                   "entity": "direct_attacker",
                   "predicate": {
-                    "type": "minecraft:trident"
+                    "minecraft:entity_type": "minecraft:trident"
                   }
                 }
               ]
@@ -111,7 +111,7 @@
               "condition": "minecraft:entity_properties",
               "entity": "direct_attacker",
               "predicate": {
-                "type": "allthemodium:alloy_trident"
+                "minecraft:entity_type": "allthemodium:alloy_trident"
               }
             }
           ]

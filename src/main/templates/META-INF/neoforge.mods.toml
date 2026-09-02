@@ -34,13 +34,13 @@ config="${mod_id}.mixins.json"
 [[dependencies.${mod_id}]]
     modId="geckolib"
     type="required"
-    versionRange="[5.5,)"
+    versionRange="[5.5.4,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.${mod_id}]]
     modId="alltheores"
     type="required"
-    versionRange="[4.0.0,)"
+    versionRange="[4.1.0,)"
     ordering="NONE"
     side="BOTH"

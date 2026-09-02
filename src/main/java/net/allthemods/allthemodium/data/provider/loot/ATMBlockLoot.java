@@ -2,7 +2,7 @@ package net.allthemods.allthemodium.data.provider.loot;
 
 import net.neoforged.neoforge.registries.DeferredHolder;
 
-import net.minecraft.advancements.criterion.StatePropertiesPredicate;
+import net.minecraft.advancements.predicates.StatePropertiesPredicate;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.resources.ResourceKey;

@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "key": {
     "#": "allthemodium:vibranium_ingot",
     "C": "minecraft:end_stone",

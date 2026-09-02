@@ -12,6 +12,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EntityTypes;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.SpawnGroupData;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
@@ -64,12 +65,12 @@ public class PiglichEntity extends Piglin implements GeoEntity {
     private static final RawAnimation SUMMON = RawAnimation.begin().then("summon.piglich.nik", LoopType.PLAY_ONCE);
     private static final RawAnimation MELEE = RawAnimation.begin().then("meleeattack.piglich.nik", LoopType.PLAY_ONCE);
     private static final List<EntityType<? extends Monster>> SUPPORT_TYPES = List.of(
-            EntityType.PIGLIN_BRUTE,
-            EntityType.BLAZE,
-            EntityType.ENDERMAN,
-            EntityType.EVOKER,
-            EntityType.VINDICATOR,
-            EntityType.WITCH
+            EntityTypes.PIGLIN_BRUTE,
+            EntityTypes.BLAZE,
+            EntityTypes.ENDERMAN,
+            EntityTypes.EVOKER,
+            EntityTypes.VINDICATOR,
+            EntityTypes.WITCH
     );
     
     private final AnimatableInstanceCache animationCache = GeckoLibUtil.createInstanceCache(this);

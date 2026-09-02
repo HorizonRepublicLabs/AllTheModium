@@ -13,6 +13,7 @@ import net.minecraft.world.attribute.EnvironmentAttributes;
 import net.minecraft.world.clock.WorldClock;
 import net.minecraft.world.clock.WorldClocks;
 import net.minecraft.world.level.CardinalLighting;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.dimension.DimensionType;
 import net.minecraft.world.timeline.Timeline;
@@ -32,6 +33,7 @@ public class ATMDimensions {
     public static final ResourceKey<DimensionType> THE_BEYOND_TYPE = ATMDimensions.createType("the_beyond");
     
     public static void bootstrap(final BootstrapContext<DimensionType> ctx) {
+        HolderGetter<Block> blocks = ctx.lookup(Registries.BLOCK);
         HolderGetter<Timeline> timelines = ctx.lookup(Registries.TIMELINE);
         HolderGetter<WorldClock> clocks = ctx.lookup(Registries.WORLD_CLOCK);
         
@@ -46,7 +48,7 @@ public class ATMDimensions {
                         -64,
                         384,
                         384,
-                        BlockTags.INFINIBURN_OVERWORLD,
+                        blocks.getOrThrow(BlockTags.INFINIBURN_OVERWORLD),
                         1.0F,
                         new DimensionType.MonsterSettings(
                                 ConstantInt.of(0),
@@ -77,7 +79,7 @@ public class ATMDimensions {
                         -128,
                         512,
                         512,
-                        BlockTags.INFINIBURN_OVERWORLD,
+                        blocks.getOrThrow(BlockTags.INFINIBURN_OVERWORLD),
                         0.0F,
                         new DimensionType.MonsterSettings(
                                 ConstantInt.of(15),
@@ -109,7 +111,7 @@ public class ATMDimensions {
                         -64,
                         384,
                         384,
-                        BlockTags.INFINIBURN_OVERWORLD,
+                        blocks.getOrThrow(BlockTags.INFINIBURN_OVERWORLD),
                         0.0F,
                         new DimensionType.MonsterSettings(
                                 ConstantInt.of(15),
