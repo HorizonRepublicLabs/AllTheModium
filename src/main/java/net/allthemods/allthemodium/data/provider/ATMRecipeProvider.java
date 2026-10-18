@@ -344,7 +344,11 @@ public class ATMRecipeProvider extends RecipeProvider {
         this.smithingTemplate(ATMItems.ALLTHEMODIUM_SMITHING_TEMPLATE.get(), Items.NETHERITE_INGOT, Items.DEEPSLATE);
         this.smithingTemplate(ATMItems.VIBRANIUM_SMITHING_TEMPLATE.get(), ATMItems.ALLTHEMODIUM_INGOT.get(), ATMBlocks.ANCIENT_STONE.get());
         this.smithingTemplate(ATMItems.UNOBTAINIUM_SMITHING_TEMPLATE.get(), ATMItems.VIBRANIUM_INGOT.get(), Items.END_STONE);
-        
+
+        this.smithing(ATMItems.ALLTHEMODIUM_SMITHING_TEMPLATE.get(), ATMItems.ALLTHEMODIUM_PLATE.get(), Items.NETHERITE_INGOT, ATMItems.SILENT_ALLTHEMODIUM_PLATE.get());
+        this.smithing(ATMItems.VIBRANIUM_SMITHING_TEMPLATE.get(), ATMItems.VIBRANIUM_PLATE.get(), ATMItems.ALLTHEMODIUM_INGOT.get(), ATMItems.SILENT_VIBRANIUM_PLATE.get());
+        this.smithing(ATMItems.UNOBTAINIUM_SMITHING_TEMPLATE.get(), ATMItems.UNOBTAINIUM_PLATE.get(), ATMItems.VIBRANIUM_INGOT.get(), ATMItems.SILENT_UNOBTAINIUM_PLATE.get());
+
         this.smithing(ATMItems.ALLTHEMODIUM_SMITHING_TEMPLATE.get(), Items.NETHERITE_HELMET, ATMItems.ALLTHEMODIUM_INGOT.get(), ATMItems.ALLTHEMODIUM_HELMET.get());
         this.smithing(ATMItems.ALLTHEMODIUM_SMITHING_TEMPLATE.get(), Items.NETHERITE_CHESTPLATE, ATMItems.ALLTHEMODIUM_INGOT.get(), ATMItems.ALLTHEMODIUM_CHESTPLATE.get());
         this.smithing(ATMItems.ALLTHEMODIUM_SMITHING_TEMPLATE.get(), Items.NETHERITE_LEGGINGS, ATMItems.ALLTHEMODIUM_INGOT.get(), ATMItems.ALLTHEMODIUM_LEGGINGS.get());
@@ -392,10 +396,26 @@ public class ATMRecipeProvider extends RecipeProvider {
     
     private void addSpecialRecipes() {
         this.teleportPad();
+        this.brush(ATMTags.Items.INGOTS_ALLTHEMODIUM, ATMItems.ALLTHEMODIUM_BRUSH.get(), "allthemodium_ingot");
+        this.brush(ATMTags.Items.INGOTS_VIBRANIUM, ATMItems.VIBRANIUM_BRUSH.get(), "vibranium_ingot");
+        this.brush(ATMTags.Items.INGOTS_UNOBTAINIUM, ATMItems.UNOBTAINIUM_BRUSH.get(), "unobtainium_ingot");
         this.compressSimple(ATMItems.PIGLICH_HEART.get(), ATMBlocks.PIGLICH_HEART_BLOCK.get().asItem(), "piglich_heart_block", "piglich_heart");
         this.decompressSimple(ATMBlocks.PIGLICH_HEART_BLOCK.get().asItem(), ATMItems.PIGLICH_HEART.get(), "piglich_heart", "piglich_heart_block");
     }
     
+    private void brush(TagKey<Item> ingot, Item output, String unlockName) {
+        ShapedRecipeBuilder.shaped(this.items, RecipeCategory.MISC, output)
+                .group(ATMRecipeProvider.GROUP)
+                .pattern("f")
+                .pattern("i")
+                .pattern("s")
+                .define('f', Tags.Items.FEATHERS)
+                .define('i', ingot)
+                .define('s', Tags.Items.RODS_WOODEN)
+                .unlockedBy("has_" + unlockName, this.has(ingot))
+                .save(this.output);
+    }
+
     private void food(Item input, Item output) {
         ShapedRecipeBuilder.shaped(this.items, RecipeCategory.MISC, output)
                 .group(ATMRecipeProvider.GROUP)
@@ -581,7 +601,7 @@ public class ATMRecipeProvider extends RecipeProvider {
                         .pattern("asa")
                         .pattern("asa")
                         .define('a', input)
-                        .define('s', Items.STICK)
+                        .define('s', Tags.Items.RODS_WOODEN)
                         .unlockedBy("has_" + unlockName, this.has(input)),
                 output
         );
@@ -594,7 +614,7 @@ public class ATMRecipeProvider extends RecipeProvider {
                         .pattern("sas")
                         .pattern("sas")
                         .define('a', input)
-                        .define('s', Items.STICK)
+                        .define('s', Tags.Items.RODS_WOODEN)
                         .unlockedBy("has_" + unlockName, this.has(input)),
                 output
         );
@@ -664,7 +684,7 @@ public class ATMRecipeProvider extends RecipeProvider {
                         .pattern(" n ")
                         .pattern("nan")
                         .pattern(" n ")
-                        .define('a', Items.ENDER_PEARL)
+                        .define('a', Tags.Items.ENDER_PEARLS)
                         .define('n', ATMTags.Items.NUGGETS_ALLTHEMODIUM)
                         .unlockedBy("has_allthemodium_nugget", this.has(ATMTags.Items.NUGGETS_ALLTHEMODIUM)),
                 ATMBlocks.TELEPORT_PAD.get().asItem(),

@@ -16,7 +16,7 @@ sourceSets.main.resources {
     srcDir('src/generated/resources')
 
     exclude("**/*.bbmodel")
-    exclude("src/generated/**/.cache")
+    exclude(".cache/**")
 }
 
 base {
@@ -29,7 +29,11 @@ neoForge {
     version = project.neo_version
 
     // accessTransformers = project.files('src/main/resources/META-INF/accesstransformer.cfg')
-    
+
+    interfaceInjectionData {
+        from(file('interfaces.json'))
+    }
+
     runs {
         client {
             client()
@@ -103,6 +107,11 @@ dependencies {
     implementation("net.allthemods.alltheores:alltheores:${alltheores_version}") {
         transitive = false
     }
+
+    // Optional integrations (guarded by ModList checks); no 26.2 builds, compile against 26.1 artifacts.
+    compileOnly "curse.maven:silent-gear-297039:8735808"
+    compileOnly "curse.maven:silent-lib-242998:7936002"
+    compileOnly "curse.maven:lootr-361276:8977039"
 }
 
 tasks.withType(ProcessResources).configureEach {
@@ -114,6 +123,7 @@ var generateModMetadata = tasks.register("generateModMetadata", ProcessResources
             minecraft_version      : minecraft_version,
             minecraft_version_range: minecraft_version_range,
             neo_version            : neo_version,
+            neo_version_range      : neo_version_range,
             mod_id                 : mod_id,
             mod_name               : mod_name,
             mod_license            : mod_license,

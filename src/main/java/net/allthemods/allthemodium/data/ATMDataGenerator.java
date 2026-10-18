@@ -1,6 +1,7 @@
 package net.allthemods.allthemodium.data;
 
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
@@ -9,9 +10,11 @@ import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;
 
 import net.allthemods.allthemodium.api.ATM;
+import net.allthemods.allthemodium.data.provider.ATMDataMapProvider;
 import net.allthemods.allthemodium.data.provider.ATMEnchantments;
 import net.allthemods.allthemodium.data.provider.ATMEquipmentAssetProvider;
 import net.allthemods.allthemodium.data.provider.ATMLanguageProvider;
+import net.allthemods.allthemodium.data.provider.ATMMaterialsProvider;
 import net.allthemods.allthemodium.data.provider.ATMModelProvider;
 import net.allthemods.allthemodium.data.provider.ATMRecipeProvider;
 import net.allthemods.allthemodium.data.provider.ATMSpriteSourceProvider;
@@ -22,9 +25,7 @@ import net.allthemods.allthemodium.data.provider.tags.ATMItemTagsProvider;
 import net.allthemods.allthemodium.data.worldgen.ATMBiomeModifier;
 import net.allthemods.allthemodium.data.worldgen.ATMBiomes;
 import net.allthemods.allthemodium.data.worldgen.ATMConfiguredFeatures;
-import net.allthemods.allthemodium.data.worldgen.ATMDimension;
 import net.allthemods.allthemodium.data.worldgen.ATMDimensions;
-import net.allthemods.allthemodium.data.worldgen.ATMNoiseSettings;
 import net.allthemods.allthemodium.data.worldgen.ATMPlacedFeatures;
 import net.allthemods.allthemodium.data.worldgen.ATMStructureSets;
 import net.allthemods.allthemodium.data.worldgen.ATMStructures;
@@ -42,8 +43,6 @@ public class ATMDataGenerator {
             .add(Registries.TEMPLATE_POOL, ATMTemplatePools::bootstrap)
             .add(Registries.STRUCTURE, ATMStructures::bootstrap)
             .add(Registries.STRUCTURE_SET, ATMStructureSets::bootstrap)
-            .add(Registries.NOISE_SETTINGS, ATMNoiseSettings::bootstrap)
-            .add(Registries.LEVEL_STEM, ATMDimension::bootstrap)
             .add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, ATMBiomeModifier::bootstrap);
     
     @SubscribeEvent
@@ -57,8 +56,11 @@ public class ATMDataGenerator {
         event.createProvider(ATMBiomeTagsProvider::new);
         event.createProvider(ATMBlockTagsProvider::new);
         event.createProvider(ATMItemTagsProvider::new);
+        event.createProvider(ATMDataMapProvider::new);
         event.createProvider(ATMRecipeProvider.Runner::new);
         event.createProvider(ATMSpriteSourceProvider::new);
         event.createDatapackRegistryObjects(ATMDataGenerator.BUILDER);
+
+        if (ModList.get().isLoaded("silentgear")) ATMMaterialsProvider.register(event);
     }
 }

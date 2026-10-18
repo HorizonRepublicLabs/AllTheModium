@@ -1,5 +1,6 @@
 package net.allthemods.allthemodium.data.provider;
 
+import net.allthemods.allthemodium.data.worldgen.ATMBiomes;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 
 import net.minecraft.data.PackOutput;
@@ -30,6 +31,16 @@ public class ATMLanguageProvider extends LanguageProvider {
         this.addDimension(ATMDimensions.MINING, "Mining Dimension");
         this.addDimension(ATMDimensions.THE_BEYOND, "The Beyond");
         this.addDimension(ATMDimensions.THE_OTHER, "The Other");
+
+        this.addBiome(ATMBiomes.BASALT_DELTAS, "Ancient Basalt Deltas");
+        this.addBiome(ATMBiomes.MINING, "ATM Mining Dim");
+        this.addBiome(ATMBiomes.THE_BEYOND, "The Beyond");
+        this.addBiome(ATMBiomes.THE_OTHER, "The Other");
+        this.addBiome(ATMBiomes.CRIMSON_FOREST, "Ancient Crimson Forest");
+        this.addBiome(ATMBiomes.WARPED_FOREST, "Ancient Warped Forest");
+        this.addBiome(ATMBiomes.DESERT, "The Other Desert");
+        this.addBiome(ATMBiomes.DESERT_HILLS, "The Other Desert Hills");
+        this.addBiome(ATMBiomes.SOUL_SAND_VALLEY, "The Other Soul Sand Valley");
     }
     
     private void addBlocks() {
@@ -56,9 +67,11 @@ public class ATMLanguageProvider extends LanguageProvider {
         this.addBlock(ATMBlocks.ANCIENT_CAVE_VINES, "Ancient Vines");
         this.addBlock(ATMBlocks.ANCIENT_DIRT, "Ancient Dirt");
         this.addBlock(ATMBlocks.ANCIENT_GRASS, "Ancient Grass");
+        this.addBlock(ATMBlocks.ANCIENT_PODZOL, "Ancient Podzol");
         
         this.addBlock(ATMBlocks.ANCIENT_SAPLING, "Ancient Sapling");
         this.addBlock(ATMBlocks.ANCIENT_HERB, "Ancient Herbs");
+        this.addBlock(ATMBlocks.ANCIENT_FERN, "Ancient Fern");
         this.addBlock(ATMBlocks.ANCIENT_LOG_0, "Ancient Log");
         this.addBlock(ATMBlocks.ANCIENT_LOG_1, "Ancient Log");
         this.addBlock(ATMBlocks.ANCIENT_LOG_2, "Ancient Log");
@@ -137,6 +150,8 @@ public class ATMLanguageProvider extends LanguageProvider {
         
         this.addBlock(ATMBlocks.SUS_CLAY, "Suspicious Clay");
         this.addBlock(ATMBlocks.SUS_SOUL_SAND, "Suspicious Soul Sand");
+        this.add("block.allthemodium.lootr_suspicious_clay", "Suspicious Clay");
+        this.add("block.allthemodium.lootr_suspicious_soul_sand", "Suspicious Soul Sand");
         
         this.addBlock(ATMBlocks.TELEPORT_PAD, "Teleport Pad");
         
@@ -169,6 +184,12 @@ public class ATMLanguageProvider extends LanguageProvider {
         this.addItem(ATMItems.ALLTHEMODIUM_INGOT, "Allthemodium Ingot");
         this.addItem(ATMItems.VIBRANIUM_INGOT, "Vibranium Ingot");
         this.addItem(ATMItems.UNOBTAINIUM_INGOT, "Unobtainium Ingot");
+        this.addItem(ATMItems.SILENT_ALLTHEMODIUM_PLATE, "Silent Allthemodium Plate");
+        this.addItem(ATMItems.SILENT_VIBRANIUM_PLATE, "Silent Vibranium Plate");
+        this.addItem(ATMItems.SILENT_UNOBTAINIUM_PLATE, "Silent Unobtainium Plate");
+        this.add("material.silentgear.allthemodium", "Allthemodium");
+        this.add("material.silentgear.vibranium", "Vibranium");
+        this.add("material.silentgear.unobtainium", "Unobtainium");
         
         this.addItem(ATMItems.ALLTHEMODIUM_PLATE, "Allthemodium Plate");
         this.addItem(ATMItems.VIBRANIUM_PLATE, "Vibranium Plate");
@@ -233,6 +254,10 @@ public class ATMLanguageProvider extends LanguageProvider {
         this.addItem(ATMItems.ALLOY_PAXEL, "Allthemodium Alloy Paxel");
         this.addItem(ATMItems.ALLOY_MACE, "Allthemodium Alloy Mace");
         
+        this.addItem(ATMItems.ALLTHEMODIUM_BRUSH, "Allthemodium Brush");
+        this.addItem(ATMItems.VIBRANIUM_BRUSH, "Vibranium Brush");
+        this.addItem(ATMItems.UNOBTAINIUM_BRUSH, "Unobtainium Brush");
+
         this.addItem(ATMItems.ALLTHEMODIUM_BOW, "Allthemodium Bow");
         this.addItem(ATMItems.VIBRANIUM_SHIELD, "Vibranium Shield");
         this.addItem(ATMItems.UNOBTAINIUM_CROSSBOW, "Unobtainium Crossbow");

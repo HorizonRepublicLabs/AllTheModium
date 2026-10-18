@@ -14,13 +14,17 @@ Allthemodium!.\nBrought to you by AllTheMods!
 [[mixins]]
 config="${mod_id}.mixins.json"
 
+[[mixins]]
+config="${mod_id}.lootr.mixins.json"
+requiredMods=["lootr"]
+
 #[[accessTransformers]]
 #file="META-INF/accesstransformer.cfg"
 
 [[dependencies.${mod_id}]]
     modId="neoforge"
     type="required"
-    versionRange="[${neo_version},)"
+    versionRange="${neo_version_range}"
     ordering="NONE"
     side="BOTH"
 
@@ -42,5 +46,12 @@ config="${mod_id}.mixins.json"
     modId="alltheores"
     type="required"
     versionRange="[4.1.0,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.${mod_id}]]
+    modId="lootr"
+    type="optional"
+    versionRange="[1.23.38.123,)"
     ordering="NONE"
     side="BOTH"

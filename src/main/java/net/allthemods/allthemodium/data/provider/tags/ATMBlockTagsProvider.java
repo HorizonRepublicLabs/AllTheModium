@@ -8,6 +8,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BlockItemTags;
+import net.minecraft.resources.Identifier;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
@@ -40,34 +41,70 @@ public class ATMBlockTagsProvider extends BlockTagsProvider {
                         key(ATMBlocks.RAW_ALLTHEMODIUM_BLOCK.get()),
                         key(ATMBlocks.ALLTHEMODIUM_BLOCK.get()));
         
-        this.tag(ATMTags.Blocks.INCORRECT_FOR_ALLTHEMODIUM_TOOL)
+        this.tag(ATMTags.Blocks.NEEDS_ALLTHEMODIUM_TOOL)
+                .add(
+                        key(ATMBlocks.VIBRANIUM_ORE.get()),
+                        key(ATMBlocks.OTHER_VIBRANIUM_ORE.get()),
+                        key(ATMBlocks.RAW_VIBRANIUM_BLOCK.get()),
+                        key(ATMBlocks.VIBRANIUM_BLOCK.get())
+                );
+
+        this.tag(ATMTags.Blocks.NEEDS_VIBRANIUM_TOOL)
                 .add(
                         key(ATMBlocks.UNOBTAINIUM_ORE.get()),
                         key(ATMBlocks.RAW_UNOBTAINIUM_BLOCK.get()),
-                        key(ATMBlocks.UNOBTAINIUM_BLOCK.get()))
-                .addTag(ATMTags.Blocks.INCORRECT_FOR_VIBRANIUM_TOOL);
-        
-        this.tag(ATMTags.Blocks.INCORRECT_FOR_VIBRANIUM_TOOL)
+                        key(ATMBlocks.UNOBTAINIUM_BLOCK.get())
+                );
+
+        this.tag(ATMTags.Blocks.NEEDS_UNOBTAINIUM_TOOL)
                 .add(
                         key(ATMBlocks.UNOBTAINIUM_ALLTHEMODIUM_BLOCK.get()),
                         key(ATMBlocks.UNOBTAINIUM_VIBRANIUM_BLOCK.get()),
-                        key(ATMBlocks.VIBRANIUM_ALLTHEMODIUM_BLOCK.get()));
-        
+                        key(ATMBlocks.VIBRANIUM_ALLTHEMODIUM_BLOCK.get()),
+                        key(ATMBlocks.ANCIENT_STONE_BRICKS.get()),
+                        key(ATMBlocks.CHISELED_ANCIENT_STONE_BRICKS.get()),
+                        key(ATMBlocks.CRACKED_ANCIENT_STONE_BRICKS.get()),
+                        key(ATMBlocks.POLISHED_ANCIENT_STONE.get()),
+                        key(ATMBlocks.SMOOTH_ANCIENT_STONE.get()),
+                        key(ATMBlocks.ANCIENT_STONE_BRICK_WALL.get()),
+                        key(ATMBlocks.CHISELED_ANCIENT_STONE_BRICK_WALL.get()),
+                        key(ATMBlocks.CRACKED_ANCIENT_STONE_BRICK_WALL.get()),
+                        key(ATMBlocks.POLISHED_ANCIENT_STONE_WALL.get()),
+                        key(ATMBlocks.SMOOTH_ANCIENT_STONE_WALL.get()),
+                        key(ATMBlocks.ANCIENT_STONE_BRICK_STAIRS.get()),
+                        key(ATMBlocks.CHISELED_ANCIENT_STONE_BRICK_STAIRS.get()),
+                        key(ATMBlocks.CRACKED_ANCIENT_STONE_BRICK_STAIRS.get()),
+                        key(ATMBlocks.POLISHED_ANCIENT_STONE_STAIRS.get()),
+                        key(ATMBlocks.SMOOTH_ANCIENT_STONE_STAIRS.get()),
+                        key(ATMBlocks.ANCIENT_STONE_BRICK_SLAB.get()),
+                        key(ATMBlocks.CHISELED_ANCIENT_STONE_BRICK_SLAB.get()),
+                        key(ATMBlocks.CRACKED_ANCIENT_STONE_BRICK_SLAB.get()),
+                        key(ATMBlocks.POLISHED_ANCIENT_STONE_SLAB.get()),
+                        key(ATMBlocks.SMOOTH_ANCIENT_STONE_SLAB.get())
+                );
+
+        this.tag(ATMTags.Blocks.INCORRECT_FOR_ALLTHEMODIUM_TOOL)
+                .addTag(ATMTags.Blocks.NEEDS_VIBRANIUM_TOOL)
+                .addTag(ATMTags.Blocks.NEEDS_UNOBTAINIUM_TOOL);
+
+        this.tag(ATMTags.Blocks.INCORRECT_FOR_VIBRANIUM_TOOL)
+                .addTag(ATMTags.Blocks.NEEDS_UNOBTAINIUM_TOOL);
+
         this.tag(ATMTags.Blocks.INCORRECT_FOR_UNOBTAINIUM_TOOL);
         this.tag(ATMTags.Blocks.INCORRECT_FOR_ALLOY_TOOL);
-        
+
         List.of(
                 BlockTags.INCORRECT_FOR_WOODEN_TOOL,
                 BlockTags.INCORRECT_FOR_STONE_TOOL,
+                BlockTags.INCORRECT_FOR_COPPER_TOOL,
                 BlockTags.INCORRECT_FOR_IRON_TOOL,
                 BlockTags.INCORRECT_FOR_GOLD_TOOL,
                 BlockTags.INCORRECT_FOR_DIAMOND_TOOL,
                 BlockTags.INCORRECT_FOR_NETHERITE_TOOL
         ).forEach(tag -> this.tag(tag)
-                .addTag(ATMTags.Blocks.INCORRECT_FOR_ALLTHEMODIUM_TOOL)
-                .addTag(ATMTags.Blocks.INCORRECT_FOR_VIBRANIUM_TOOL)
-                .addTag(ATMTags.Blocks.INCORRECT_FOR_UNOBTAINIUM_TOOL)
-                .addTag(ATMTags.Blocks.INCORRECT_FOR_ALLOY_TOOL)
+                .addTag(ATMTags.Blocks.NEEDS_ALLTHEMODIUM_TOOL)
+                .addTag(ATMTags.Blocks.NEEDS_VIBRANIUM_TOOL)
+                .addTag(ATMTags.Blocks.NEEDS_UNOBTAINIUM_TOOL)
         );
         
         this.tag(ATMTags.Blocks.MINEABLE_WITH_PAXEL)
@@ -80,8 +117,10 @@ public class ATMBlockTagsProvider extends BlockTagsProvider {
                 .add(
                         key(ATMBlocks.ANCIENT_DIRT.get()),
                         key(ATMBlocks.ANCIENT_GRASS.get()),
+                        key(ATMBlocks.ANCIENT_PODZOL.get()),
                         key(Blocks.WARPED_NYLIUM),
-                        key(Blocks.CRIMSON_NYLIUM));
+                        key(Blocks.CRIMSON_NYLIUM)
+                );
         
         this.tag(BlockTags.BEACON_BASE_BLOCKS)
                 .add(
@@ -223,10 +262,12 @@ public class ATMBlockTagsProvider extends BlockTagsProvider {
                 .add(
                         key(ATMBlocks.ANCIENT_DIRT.get()),
                         key(ATMBlocks.ANCIENT_GRASS.get()),
+                        key(ATMBlocks.ANCIENT_PODZOL.get()),
                         key(ATMBlocks.SUS_CLAY.get()),
-                        key(ATMBlocks.SUS_SOUL_SAND.get()));
+                        key(ATMBlocks.SUS_SOUL_SAND.get())
+                );
         
-        this.tag(BlockTags.DIRT).add(key(ATMBlocks.ANCIENT_DIRT.get()), key(ATMBlocks.ANCIENT_GRASS.get()));
+        this.tag(BlockTags.DIRT).add(key(ATMBlocks.ANCIENT_DIRT.get()), key(ATMBlocks.ANCIENT_GRASS.get()), key(ATMBlocks.ANCIENT_PODZOL.get()));
         this.tag(BlockTags.NYLIUM).add(key(ATMBlocks.ANCIENT_STONE.get()));
         this.tag(BlockTags.INFINIBURN_NETHER).add(key(ATMBlocks.ANCIENT_STONE.get()), key(ATMBlocks.ANCIENT_GRASS.get()), key(ATMBlocks.ANCIENT_DIRT.get()));
         
@@ -357,13 +398,22 @@ public class ATMBlockTagsProvider extends BlockTagsProvider {
                         key(Blocks.SPAWNER))
                 .addTag(Tags.Blocks.ORES);
         
+        this.tag(ATMTags.Blocks.LOOTR_CONVERT_CLAYS).add(key(ATMBlocks.SUS_CLAY.get()));
+        this.tag(ATMTags.Blocks.LOOTR_CONVERT_SOUL_SANDS).add(key(ATMBlocks.SUS_SOUL_SAND.get()));
+        for (Identifier lootrBlock : List.of(ATM.id("lootr_suspicious_clay"), ATM.id("lootr_suspicious_soul_sand"))) {
+            this.getOrCreateRawBuilder(ATMTags.Blocks.OTHER_PROTECTION).addOptionalElement(lootrBlock);
+            this.getOrCreateRawBuilder(BlockTags.MINEABLE_WITH_SHOVEL).addOptionalElement(lootrBlock);
+        }
+        
         this.tag(Tags.Blocks.RELOCATION_NOT_SUPPORTED)
                 .add(
                         key(ATMBlocks.ALLTHEMODIUM_ORE.get()),
                         key(ATMBlocks.DEEPSLATE_ALLTHEMODIUM_ORE.get()),
                         key(ATMBlocks.VIBRANIUM_ORE.get()),
                         key(ATMBlocks.OTHER_VIBRANIUM_ORE.get()),
-                        key(ATMBlocks.UNOBTAINIUM_ORE.get()));
+                        key(ATMBlocks.UNOBTAINIUM_ORE.get()),
+                        key(ATMBlocks.TELEPORT_PAD.get())
+                );
     }
     
     private static TagKey<Block> atm(String path) {

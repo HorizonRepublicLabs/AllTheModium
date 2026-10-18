@@ -5,6 +5,7 @@ import net.neoforged.neoforge.common.extensions.ILevelExtension;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.Vec3i;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
@@ -22,14 +23,15 @@ import net.minecraft.world.entity.ai.village.poi.PoiRecord;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.border.WorldBorder;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
@@ -63,12 +65,13 @@ public class TeleportPad extends Block implements SimpleWaterloggedBlock {
     });
     
     private static final VoxelShape SHAPE = Block.column(16.0D, 0.0D, 3.0D);
+    private static final int SEARCH_RADIUS = 32;
     
     public static final BooleanProperty SPAWNED = BooleanProperty.create("spawned");
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     
     public TeleportPad(Properties properties) {
-        super(properties.strength(3.0F));
+        super(properties.strength(20.0F).noOcclusion());
         this.registerDefaultState(this.defaultBlockState().setValue(TeleportPad.WATERLOGGED, false).setValue(TeleportPad.SPAWNED, false));
     }
     
@@ -130,17 +133,12 @@ public class TeleportPad extends Block implements SimpleWaterloggedBlock {
             
             
             BlockPos target = TeleportPad.findSafeSpot(partner, pos);
-            if (target == pos) {
-                serverPlayer.sendSystemMessage(ATMLanguage.MESSAGE_TRANSFER_FAILED.translate(ChatFormatting.RED), true);
-                return InteractionResult.FAIL;
-            }
-            
             if (!partner.getBlockState(target).is(ATMBlocks.TELEPORT_PAD)) {
                 partner.setBlockAndUpdate(target, ATMBlocks.TELEPORT_PAD.get().defaultBlockState().setValue(TeleportPad.SPAWNED, true));
             }
             
             level.addAlwaysVisibleParticle(ParticleTypes.SOUL_FIRE_FLAME, target.getX(), target.getY(), target.getZ(), 0.0D, 1.0D, 0.0D);
-            player.teleportTo(partner, target.getX() + 0.5D, target.getY() + 0.5D, target.getZ() + 0.5D, Set.of(), player.getYRot(), player.getXRot(), false);
+            player.teleportTo(partner, target.getX() + 0.5D, target.getY() + 0.25D, target.getZ() + 0.5D, Set.of(), player.getYRot(), player.getXRot(), false);
             partner.addAlwaysVisibleParticle(ParticleTypes.SOUL_FIRE_FLAME, target.getX(), target.getY(), target.getZ(), 0.0D, 1.0D, 0.0D);
             
             return InteractionResult.SUCCESS;
@@ -149,49 +147,54 @@ public class TeleportPad extends Block implements SimpleWaterloggedBlock {
         return InteractionResult.FAIL;
     }
     
-    private static final int ISLAND_SEARCH_CHUNK_RADIUS = 8;
-    private static final int ISLAND_COLUMN_STEP = 4;
-
     private static BlockPos findSafeSpot(ServerLevel level, BlockPos origin) {
+        final WorldBorder border = level.getWorldBorder();
         final PoiManager manager = level.getPoiManager();
-        manager.ensureLoadedAndValid(level, origin, 64);
-        return ChunkPos.rangeClosed(ChunkPos.containing(origin), 4)
-                .flatMap(pos -> manager.getInChunk(record -> record.is(ATMPois.TELEPORT_PAD), pos, PoiManager.Occupancy.ANY))
+        manager.ensureLoadedAndValid(level, origin, TeleportPad.SEARCH_RADIUS);
+        Optional<BlockPos> existing = manager.getInSquare(record -> record.is(ATMPois.TELEPORT_PAD), origin, TeleportPad.SEARCH_RADIUS, PoiManager.Occupancy.ANY)
                 .map(PoiRecord::getPos)
-                .min(Comparator.<BlockPos>comparingDouble(pos -> pos.distSqr(origin)).thenComparingInt(Vec3i::getY))
-                .orElseGet(() -> TeleportPad.findIslandSurface(level, origin));
-    }
-
-    private static BlockPos findIslandSurface(ServerLevel level, BlockPos origin) {
-        final int minY = level.getMinY();
-        final ChunkPos center = ChunkPos.containing(origin);
-        for (int radius = 0; radius <= TeleportPad.ISLAND_SEARCH_CHUNK_RADIUS; radius++) {
-            BlockPos best = null;
-            double bestDist = Double.MAX_VALUE;
-            for (ChunkPos chunkPos : ChunkPos.rangeClosed(center, radius).toList()) {
-                if (Math.max(Math.abs(chunkPos.x() - center.x()), Math.abs(chunkPos.z() - center.z())) != radius) continue;
-                level.getChunk(chunkPos.x(), chunkPos.z());
-                for (int dx = 0; dx < 16; dx += TeleportPad.ISLAND_COLUMN_STEP) {
-                    for (int dz = 0; dz < 16; dz += TeleportPad.ISLAND_COLUMN_STEP) {
-                        final int x = chunkPos.getMinBlockX() + dx;
-                        final int z = chunkPos.getMinBlockZ() + dz;
-                        final int top = level.getHeight(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, x, z);
-                        if (top <= minY) continue;
-                        final BlockPos surface = new BlockPos(x, top, z);
-                        final BlockState ground = level.getBlockState(surface.below());
-                        if (ground.isAir() || ground.is(BlockTags.REPLACEABLE)) continue;
-                        if (!level.getBlockState(surface).isAir() || !level.getBlockState(surface.above()).isAir()) continue;
-                        final double dist = surface.distSqr(origin);
-                        if (dist < bestDist) {
-                            bestDist = dist;
-                            best = surface;
-                        }
-                    }
-                }
+                .filter(border::isWithinBounds)
+                .filter(pos -> level.getBlockState(pos).is(ATMBlocks.TELEPORT_PAD))
+                .min(Comparator.<BlockPos>comparingDouble(pos -> pos.distSqr(origin)).thenComparingInt(Vec3i::getY));
+        if (existing.isPresent()) return existing.get();
+        
+        for (BlockPos.MutableBlockPos candidate : BlockPos.spiralAround(origin, TeleportPad.SEARCH_RADIUS, Direction.EAST, Direction.SOUTH)) {
+            if (!border.isWithinBounds(candidate)) continue;
+            
+            int y = level.getHeight(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, candidate.getX(), candidate.getZ());
+            if (level.dimensionType().hasCeiling()) {
+                y = TeleportPad.findSafeY(level, candidate.getX(), y, candidate.getZ());
             }
-            if (best != null) return best;
+            
+            BlockPos spot = new BlockPos(candidate.getX(), y, candidate.getZ());
+            if (TeleportPad.isSafeSpot(level, spot)) return spot;
         }
+        
         return origin;
+    }
+    
+    private static int findSafeY(ServerLevel level, int x, int y, int z) {
+        BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos(x, y - 2, z);
+        while (pos.getY() > level.getMinY()) {
+            if (TeleportPad.isSafeSpot(level, pos)) return pos.getY();
+            pos.move(Direction.DOWN);
+        }
+        
+        return level.getChunkSource().getGenerator().getSpawnHeight(level.getChunk(pos).getHeightAccessorForGeneration());
+    }
+    
+    private static boolean isSafeSpot(ServerLevel level, BlockPos pos) {
+        return TeleportPad.isOpen(level, pos) && TeleportPad.isOpen(level, pos.above()) && TeleportPad.isGround(level, pos.below());
+    }
+    
+    private static boolean isOpen(ServerLevel level, BlockPos pos) {
+        BlockState state = level.getBlockState(pos);
+        return (state.isAir() || state.is(BlockTags.REPLACEABLE)) && state.getFluidState().isEmpty();
+    }
+    
+    private static boolean isGround(ServerLevel level, BlockPos pos) {
+        BlockState state = level.getBlockState(pos);
+        return !(state.isAir() || state.is(BlockTags.REPLACEABLE) || state.is(Blocks.BEDROCK)) && state.getFluidState().isEmpty();
     }
     
     public static List<Component> display() {

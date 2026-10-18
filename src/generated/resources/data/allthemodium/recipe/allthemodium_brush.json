@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "allthemodium",
+  "key": {
+    "f": "#c:feathers",
+    "i": "#c:ingots/allthemodium",
+    "s": "#c:rods/wooden"
+  },
+  "pattern": [
+    "f",
+    "i",
+    "s"
+  ],
+  "result": {
+    "id": "allthemodium:allthemodium_brush"
+  }
+}

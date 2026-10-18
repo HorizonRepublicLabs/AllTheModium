@@ -18,6 +18,9 @@ public class ATMTags {
         
         public static final TagKey<Block> OTHER_PROTECTION = Blocks.create("other_protection");
         
+        public static final TagKey<Block> LOOTR_CONVERT_CLAYS = Blocks.create("lootr/convert/clays");
+        public static final TagKey<Block> LOOTR_CONVERT_SOUL_SANDS = Blocks.create("lootr/convert/soul_sands");
+        
         public static final TagKey<Block> ORES_ALLTHEMODIUM = Blocks.neo("ores/allthemodium");
         public static final TagKey<Block> ORES_VIBRANIUM = Blocks.neo("ores/vibranium");
         public static final TagKey<Block> ORES_UNOBTANIUM = Blocks.neo("ores/unobtainium");
@@ -34,6 +37,10 @@ public class ATMTags {
         public static final TagKey<Block> STORAGE_BLOCKS_UNOBTAINIUM_ALLTHEMODIUM_ALLOY = Blocks.neo("storage_blocks/unobtainium_allthemodium_alloy");
         public static final TagKey<Block> STORAGE_BLOCKS_UNOBTAINIUM_VIBRANIUM_ALLOY = Blocks.neo("storage_blocks/unobtainium_vibranium_alloy");
         
+        public static final TagKey<Block> NEEDS_ALLTHEMODIUM_TOOL = Blocks.neo("needs_allthemodium_tool");
+        public static final TagKey<Block> NEEDS_VIBRANIUM_TOOL = Blocks.neo("needs_vibranium_tool");
+        public static final TagKey<Block> NEEDS_UNOBTAINIUM_TOOL = Blocks.neo("needs_unobtainium_tool");
+
         public static final TagKey<Block> INCORRECT_FOR_ALLTHEMODIUM_TOOL = Blocks.create("incorrect_for_allthemodium_tool");
         public static final TagKey<Block> INCORRECT_FOR_VIBRANIUM_TOOL = Blocks.create("incorrect_for_vibranium_tool");
         public static final TagKey<Block> INCORRECT_FOR_UNOBTAINIUM_TOOL = Blocks.create("incorrect_for_unobtainium_tool");

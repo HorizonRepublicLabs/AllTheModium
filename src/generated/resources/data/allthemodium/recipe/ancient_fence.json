@@ -3,7 +3,7 @@
   "group": "allthemodium",
   "key": {
     "a": "#allthemodium:ancient_planks",
-    "s": "minecraft:stick"
+    "s": "#c:rods/wooden"
   },
   "pattern": [
     "asa",

@@ -277,11 +277,14 @@ public class ATMItemTagsProvider extends ItemTagsProvider {
                         key(ATMItems.ALLTHEMODIUM_AXE.get()), key(ATMItems.VIBRANIUM_AXE.get()), key(ATMItems.UNOBTAINIUM_AXE.get()), key(ATMItems.ALLOY_AXE.get()),
                         key(ATMItems.ALLTHEMODIUM_SHOVEL.get()), key(ATMItems.VIBRANIUM_SHOVEL.get()), key(ATMItems.UNOBTAINIUM_SHOVEL.get()), key(ATMItems.ALLOY_SHOVEL.get()),
                         key(ATMItems.ALLTHEMODIUM_HOE.get()), key(ATMItems.VIBRANIUM_HOE.get()), key(ATMItems.UNOBTAINIUM_HOE.get()),
-                        key(ATMItems.ALLOY_PAXEL.get()))
+                        key(ATMItems.ALLOY_PAXEL.get())
+                )
                 .add(key(ATMItems.ALLTHEMODIUM_SWORD.get()), key(ATMItems.VIBRANIUM_SWORD.get()), key(ATMItems.UNOBTAINIUM_SWORD.get()), key(ATMItems.ALLOY_SWORD.get()))
                 .add(key(ATMItems.ALLTHEMODIUM_MACE.get()), key(ATMItems.VIBRANIUM_MACE.get()), key(ATMItems.UNOBTAINIUM_MACE.get()), key(ATMItems.ALLOY_MACE.get()))
-                .add(key(ATMItems.ALLTHEMODIUM_BOW.get()), key(ATMItems.VIBRANIUM_SHIELD.get()), key(ATMItems.UNOBTAINIUM_CROSSBOW.get()), key(ATMItems.ALLOY_TRIDENT.get()));
+                .add(key(ATMItems.ALLTHEMODIUM_BOW.get()), key(ATMItems.VIBRANIUM_SHIELD.get()), key(ATMItems.UNOBTAINIUM_CROSSBOW.get()), key(ATMItems.ALLOY_TRIDENT.get()))
+                .add(key(ATMItems.ALLTHEMODIUM_BRUSH.get()), key(ATMItems.VIBRANIUM_BRUSH.get()), key(ATMItems.UNOBTAINIUM_BRUSH.get()));
         this.tag(Tags.Items.TOOLS_MACE).add(key(ATMItems.ALLTHEMODIUM_MACE.get()), key(ATMItems.VIBRANIUM_MACE.get()), key(ATMItems.UNOBTAINIUM_MACE.get()), key(ATMItems.ALLOY_MACE.get()));
+        this.tag(Tags.Items.TOOLS_BRUSH).add(key(ATMItems.ALLTHEMODIUM_BRUSH.get()), key(ATMItems.VIBRANIUM_BRUSH.get()), key(ATMItems.UNOBTAINIUM_BRUSH.get()));
         this.tag(Tags.Items.TOOLS_BOW).add(key(ATMItems.ALLTHEMODIUM_BOW.get()));
         this.tag(Tags.Items.TOOLS_CROSSBOW).add(key(ATMItems.UNOBTAINIUM_CROSSBOW.get()));
         this.tag(Tags.Items.TOOLS_SHIELD).add(key(ATMItems.VIBRANIUM_SHIELD.get()));
