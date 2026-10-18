@@ -20,6 +20,59 @@
         "sound": "minecraft:music.nether.basalt_deltas"
       }
     },
+    "minecraft:gameplay/natural_mob_spawns": {
+      "argument": {
+        "spawn_costs": {},
+        "spawns_by_category": {
+          "creature": [
+            {
+              "type": "minecraft:strider",
+              "count": {
+                "type": "minecraft:uniform",
+                "max_inclusive": 2,
+                "min_inclusive": 1
+              },
+              "weight": 160
+            }
+          ],
+          "monster": [
+            {
+              "type": "minecraft:blaze",
+              "count": {
+                "type": "minecraft:uniform",
+                "max_inclusive": 2,
+                "min_inclusive": 1
+              },
+              "weight": 140
+            },
+            {
+              "type": "minecraft:wither_skeleton",
+              "count": {
+                "type": "minecraft:uniform",
+                "max_inclusive": 4,
+                "min_inclusive": 1
+              },
+              "weight": 140
+            },
+            {
+              "type": "minecraft:ghast",
+              "count": 1,
+              "weight": 40
+            },
+            {
+              "type": "minecraft:magma_cube",
+              "count": {
+                "type": "minecraft:uniform",
+                "max_inclusive": 5,
+                "min_inclusive": 2
+              },
+              "weight": 100
+            }
+          ]
+        }
+      },
+      "modifier": "overlay"
+    },
     "minecraft:visual/ambient_particles": [
       {
         "particle": {
@@ -54,48 +107,5 @@
     ]
   ],
   "has_precipitation": false,
-  "spawn_costs": {},
-  "spawners": {
-    "ambient": [],
-    "axolotls": [],
-    "creature": [
-      {
-        "type": "minecraft:strider",
-        "maxCount": 2,
-        "minCount": 1,
-        "weight": 160
-      }
-    ],
-    "misc": [],
-    "monster": [
-      {
-        "type": "minecraft:blaze",
-        "maxCount": 2,
-        "minCount": 1,
-        "weight": 140
-      },
-      {
-        "type": "minecraft:wither_skeleton",
-        "maxCount": 4,
-        "minCount": 1,
-        "weight": 140
-      },
-      {
-        "type": "minecraft:ghast",
-        "maxCount": 1,
-        "minCount": 1,
-        "weight": 40
-      },
-      {
-        "type": "minecraft:magma_cube",
-        "maxCount": 5,
-        "minCount": 2,
-        "weight": 100
-      }
-    ],
-    "underground_water_creature": [],
-    "water_ambient": [],
-    "water_creature": []
-  },
   "temperature": 0.9
 }

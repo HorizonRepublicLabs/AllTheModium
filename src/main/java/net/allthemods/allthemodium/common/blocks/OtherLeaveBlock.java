@@ -3,36 +3,27 @@ package net.allthemods.allthemodium.common.blocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.ParticleUtils;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.LeavesBlock;
+import net.minecraft.world.level.block.UntintedParticleLeavesBlock;
+import net.minecraft.world.level.block.sounds.AmbientLeavesBlockSoundPlayer;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FluidState;
 
 import net.allthemods.allthemodium.core.registry.ATMBlocks;
 
-import com.mojang.serialization.MapCodec;
 
 import java.util.function.Supplier;
 
-public abstract class OtherLeaveBlock extends LeavesBlock {
+public abstract class OtherLeaveBlock extends UntintedParticleLeavesBlock {
     
     public OtherLeaveBlock(Properties properties) {
-        super(0.02F, properties);
-    }
-    
-    @Override
-    public abstract MapCodec<? extends OtherLeaveBlock> codec();
-    
-    @Override
-    protected void spawnFallingLeavesParticle(Level level, BlockPos pos, RandomSource random) {
-        ParticleUtils.spawnParticleBelow(level, pos, random, ParticleTypes.PALE_OAK_LEAVES);
+        super(0.02F, ParticleTypes.PALE_OAK_LEAVES, AmbientLeavesBlockSoundPlayer.noAmbientSound(), properties);
     }
     
     public abstract static class Top extends OtherLeaveBlock {
@@ -77,57 +68,37 @@ public abstract class OtherLeaveBlock extends LeavesBlock {
     
     public static final class Ancient extends Top {
         
-        private static final MapCodec<Ancient> CODEC = BlockBehaviour.simpleCodec(Ancient::new);
         
         public Ancient(Properties properties) {
             super(properties, ATMBlocks.ANCIENT_LEAVES_BOTTOM, 800, false);
         }
         
-        @Override
-        public MapCodec<Ancient> codec() {
-            return Ancient.CODEC;
-        }
     }
     
     public static final class Soul extends Top {
         
-        private static final MapCodec<Soul> CODEC = BlockBehaviour.simpleCodec(Soul::new);
         
         public Soul(Properties properties) {
             super(properties, ATMBlocks.SOUL_LEAVES_BOTTOM, 0, true);
         }
         
-        @Override
-        public MapCodec<Soul> codec() {
-            return Soul.CODEC;
-        }
     }
     
     public static final class Demonic extends Top {
         
-        private static final MapCodec<Demonic> CODEC = BlockBehaviour.simpleCodec(Demonic::new);
         
         public Demonic(Properties properties) {
             super(properties, ATMBlocks.DEMONIC_LEAVES_BOTTOM, 80, true);
         }
         
-        @Override
-        public MapCodec<Demonic> codec() {
-            return Demonic.CODEC;
-        }
     }
     
     public static final class Bottom extends OtherLeaveBlock {
         
-        private static final MapCodec<Bottom> CODEC = BlockBehaviour.simpleCodec(Bottom::new);
         
         public Bottom(Properties properties) {
             super(properties);
         }
         
-        @Override
-        public MapCodec<Bottom> codec() {
-            return Bottom.CODEC;
-        }
     }
 }

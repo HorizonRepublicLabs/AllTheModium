@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "allthemodium:ancient_planks_3_from_shapelesscrafting"
+        "recipes": "allthemodium:ancient_planks_3_from_shapelesscrafting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

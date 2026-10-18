@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "allthemodium:allthemodium_pickaxe_smithing"
+        "recipes": "allthemodium:allthemodium_pickaxe_smithing"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

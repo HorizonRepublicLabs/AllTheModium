@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "allthemodium:allthemodium_apple"
+        "recipes": "allthemodium:allthemodium_apple"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

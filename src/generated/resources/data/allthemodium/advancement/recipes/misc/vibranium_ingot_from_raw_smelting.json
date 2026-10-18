@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "allthemodium:vibranium_ingot_from_raw_smelting"
+        "recipes": "allthemodium:vibranium_ingot_from_raw_smelting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

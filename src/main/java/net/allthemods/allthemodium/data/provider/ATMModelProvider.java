@@ -10,6 +10,7 @@ import net.minecraft.client.data.models.MultiVariant;
 import net.minecraft.client.data.models.blockstates.MultiVariantGenerator;
 import net.minecraft.client.data.models.model.ItemModelUtils;
 import net.minecraft.client.data.models.model.ModelLocationUtils;
+import net.neoforged.neoforge.client.model.item.TrimmedArmorModel;
 import net.minecraft.client.data.models.model.ModelTemplates;
 import net.minecraft.client.data.models.model.TextureMapping;
 import net.minecraft.client.data.models.model.TextureSlot;
@@ -20,17 +21,14 @@ import net.minecraft.core.Holder;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.BowItem;
 import net.minecraft.world.item.BrushItem;
 import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.CrossbowItem;
-import net.minecraft.world.item.HoeItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.MaceItem;
 import net.minecraft.world.item.ShieldItem;
 import net.minecraft.world.item.SpawnEggItem;
-import net.minecraft.world.item.ShovelItem;
 import net.minecraft.world.item.TridentItem;
 import net.minecraft.world.item.equipment.EquipmentAsset;
 import net.minecraft.world.item.equipment.trim.TrimMaterial;
@@ -114,10 +112,10 @@ public final class ATMModelProvider extends ModelProvider {
         
         blockModels.createTrivialBlock(
                 ATMBlocks.ANCIENT_GRASS.get(),
-                TexturedModel.CUBE_TOP_BOTTOM.updateTexture(mapping -> mapping.put(TextureSlot.BOTTOM, TextureMapping.getBlockTexture(ATMBlocks.ANCIENT_DIRT.get())))
+                TexturedModel.CUBE_BOTTOM_TOP.updateTexture(mapping -> mapping.put(TextureSlot.BOTTOM, TextureMapping.getBlockTexture(ATMBlocks.ANCIENT_DIRT.get())))
         );
         
-        blockModels.createTrivialBlock(ATMBlocks.ANCIENT_PODZOL.get(), TexturedModel.CUBE_TOP_BOTTOM);
+        blockModels.createTrivialBlock(ATMBlocks.ANCIENT_PODZOL.get(), TexturedModel.CUBE_BOTTOM_TOP);
         
         for (var block : List.of(ATMBlocks.ANCIENT_LEAVES.get(), ATMBlocks.SOUL_LEAVES.get(), ATMBlocks.DEMONIC_LEAVES.get())) {
             blockModels.createTrivialBlock(block, TexturedModel.LEAVES);
@@ -238,7 +236,7 @@ public final class ATMModelProvider extends ModelProvider {
                                 )
                         )
                 );
-            } else if (item instanceof BrushItem || item instanceof AxeItem || item instanceof HoeItem || item instanceof ShovelItem || path.endsWith("_sword") || path.endsWith("_pickaxe") || path.endsWith("_paxel")) {
+            } else if (item instanceof BrushItem || path.endsWith("_axe") || path.endsWith("_hoe") || path.endsWith("_shovel") || path.endsWith("_sword") || path.endsWith("_pickaxe") || path.endsWith("_paxel")) {
                 itemModels.generateFlatItem(item, ModelTemplates.FLAT_HANDHELD_ITEM);
             } else if (item instanceof MaceItem || path.endsWith("_mace")) {
                 itemModels.generateFlatItem(item, ModelTemplates.FLAT_HANDHELD_MACE_ITEM);
@@ -270,27 +268,11 @@ public final class ATMModelProvider extends ModelProvider {
     }
     
     private void generateTrimmableItem(ItemModelGenerators itemModels, Item armor, ResourceKey<EquipmentAsset> equipmentAssetId, Identifier slotTrimPrefix) {
-        Identifier modelLocation = ModelLocationUtils.getModelLocation(armor);
-        Material itemTexture = TextureMapping.getItemTexture(armor);
-        List<SelectItemModel.SwitchCase<ResourceKey<TrimMaterial>>> cases = new ArrayList<>();
-        
-        for (ItemModelGenerators.TrimMaterialData material : ATMModelProvider.trimMaterialModels()) {
-            Identifier trimModelLocation = modelLocation.withSuffix("_" + material.assets().base().suffix() + "_trim");
-            Material trimOverlayTexture = new Material(slotTrimPrefix.withSuffix("_" + material.assets().assetId(equipmentAssetId).suffix()));
-            itemModels.generateLayeredItem(trimModelLocation, itemTexture, trimOverlayTexture);
-            cases.add(ItemModelUtils.when(material.materialKey(), ItemModelUtils.plainModel(trimModelLocation)));
-        }
-        
-        ModelTemplates.FLAT_ITEM.create(modelLocation, TextureMapping.layer0(itemTexture), itemModels.modelOutput);
-        itemModels.itemModelOutput.accept(armor, ItemModelUtils.select(new net.minecraft.client.renderer.item.properties.select.TrimMaterialProperty(), ItemModelUtils.plainModel(modelLocation), cases));
-    }
-    
-    private static List<ItemModelGenerators.TrimMaterialData> trimMaterialModels() {
-        List<ItemModelGenerators.TrimMaterialData> materials = new ArrayList<>(ItemModelGenerators.TRIM_MATERIAL_MODELS);
-        materials.add(new ItemModelGenerators.TrimMaterialData(ATMTrimMaterials.ALLTHEMODIUM_ASSETS, ATMTrimMaterials.ALLTHEMODIUM));
-        materials.add(new ItemModelGenerators.TrimMaterialData(ATMTrimMaterials.VIBRANIUM_ASSETS, ATMTrimMaterials.VIBRANIUM));
-        materials.add(new ItemModelGenerators.TrimMaterialData(ATMTrimMaterials.UNOBTAINIUM_ASSETS, ATMTrimMaterials.UNOBTAINIUM));
-        return materials;
+        ModelTemplates.FLAT_ITEM.create(ModelLocationUtils.getModelLocation(armor), TextureMapping.layer0(TextureMapping.getItemTexture(armor)), itemModels.modelOutput);
+        TrimmedArmorModel.PaletteTransform transform = equipmentAssetId == ATMArmorMaterials.ALLTHEMODIUM_ASSET
+                ? new TrimmedArmorModel.PaletteTransform(ATMTrimMaterials.ALLTHEMODIUM_PALETTE, ATMTrimMaterials.ALLTHEMODIUM_DARKER_PALETTE)
+                : null;
+        itemModels.generateDynamicTrimmableItem(armor, slotTrimPrefix, transform);
     }
     
     private void generateBuckets(ItemModelGenerators itemModels) {

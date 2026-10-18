@@ -32,7 +32,6 @@ public class ATMBlockTagsProvider extends BlockTagsProvider {
     
     @Override
     protected void addTags(HolderLookup.Provider registries) {
-        this.tag(BlockTags.OVERWORLD_CARVER_REPLACEABLES).add(key(ATMBlocks.ANCIENT_STONE.get()));
         
         this.tag(Tags.Blocks.NEEDS_NETHERITE_TOOL)
                 .add(

@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "allthemodium:unobtainium_ingot_from_raw_smelting"
+        "recipes": "allthemodium:unobtainium_ingot_from_raw_smelting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

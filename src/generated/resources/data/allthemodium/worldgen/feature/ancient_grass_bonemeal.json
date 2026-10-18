@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:simple_block",
+  "to_place": {
+    "type": "minecraft:weighted",
+    "entries": [
+      {
+        "data": "minecraft:air",
+        "weight": 50
+      },
+      {
+        "data": "allthemodium:ancient_fern",
+        "weight": 20
+      },
+      {
+        "data": "allthemodium:ancient_herb",
+        "weight": 9
+      },
+      {
+        "data": "allthemodium:soul_herb",
+        "weight": 1
+      }
+    ]
+  }
+}

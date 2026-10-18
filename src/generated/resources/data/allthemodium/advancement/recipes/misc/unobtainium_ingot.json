@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "allthemodium:unobtainium_ingot"
+        "recipes": "allthemodium:unobtainium_ingot"
       },
       "trigger": "minecraft:recipe_unlocked"
     },

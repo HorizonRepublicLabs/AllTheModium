@@ -1,5 +1,6 @@
 {
   "type": "minecraft:blasting",
+  "cookingtime": 100,
   "experience": 0.15,
   "ingredient": "#c:raw_materials/allthemodium",
   "result": {

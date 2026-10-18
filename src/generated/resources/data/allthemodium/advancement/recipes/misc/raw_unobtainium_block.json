@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "allthemodium:raw_unobtainium_block"
+        "recipes": "allthemodium:raw_unobtainium_block"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

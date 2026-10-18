@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "allthemodium:unobtainium_plate"
+        "recipes": "allthemodium:unobtainium_plate"
       },
       "trigger": "minecraft:recipe_unlocked"
     },

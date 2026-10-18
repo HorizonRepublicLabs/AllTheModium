@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "allthemodium:ancient_stone_wall"
+        "recipes": "allthemodium:ancient_stone_wall"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

@@ -3,7 +3,7 @@ package net.allthemods.allthemodium.data.provider;
 import net.neoforged.neoforge.common.data.DataMapProvider;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.datamaps.builtin.NeoForgeDataMaps;
-import net.neoforged.neoforge.registries.datamaps.builtin.Strippable;
+import net.neoforged.neoforge.registries.datamaps.builtin.Transformable;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -22,7 +22,7 @@ public class ATMDataMapProvider extends DataMapProvider {
 
     @Override
     protected void gather(HolderLookup.Provider provider) {
-        Builder<Strippable, Block> strippables = this.builder(NeoForgeDataMaps.STRIPPABLES);
+        var strippables = this.builder(NeoForgeDataMaps.TRANSFORMABLES);
 
         ATMDataMapProvider.strip(strippables, ATMBlocks.STRIPPED_ANCIENT_LOG, List.of(ATMBlocks.ANCIENT_LOG_0, ATMBlocks.ANCIENT_LOG_1, ATMBlocks.ANCIENT_LOG_2));
         ATMDataMapProvider.strip(strippables, ATMBlocks.STRIPPED_SOUL_LOG, List.of(ATMBlocks.SOUL_LOG_0, ATMBlocks.SOUL_LOG_1, ATMBlocks.SOUL_LOG_2));
@@ -30,13 +30,12 @@ public class ATMDataMapProvider extends DataMapProvider {
     }
 
     private static void strip(
-            Builder<Strippable, Block> strippables,
+            Builder<Transformable, Block> strippables,
             DeferredHolder<Block, ? extends Block> stripped,
             List<DeferredHolder<Block, ? extends Block>> logs
     ) {
-        Strippable value = new Strippable(stripped.get());
         for (DeferredHolder<Block, ? extends Block> log : logs) {
-            strippables.add(log.getKey(), value, false);
+            strippables.add(log.getKey(), Transformable.stripping(log.get(), stripped.get()), false);
         }
     }
 }

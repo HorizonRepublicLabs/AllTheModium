@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:ore",
+  "discard_chance_on_air_exposure": 0.0,
+  "size": 5,
+  "targets": [
+    {
+      "state": "allthemodium:other_vibranium_ore",
+      "target": {
+        "block": "allthemodium:ancient_stone",
+        "predicate_type": "minecraft:block_match"
+      }
+    }
+  ]
+}

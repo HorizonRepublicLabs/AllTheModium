@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "allthemodium:piglich_heart"
+        "recipes": "allthemodium:piglich_heart"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

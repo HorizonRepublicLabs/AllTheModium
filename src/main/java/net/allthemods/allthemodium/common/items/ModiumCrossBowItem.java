@@ -63,7 +63,7 @@ public class ModiumCrossBowItem extends CrossbowItem {
     public void onUseTick(Level level, LivingEntity entity, ItemStack itemStack, int ticksRemaining) {
         if (level.isClientSide()) return;
         
-        CrossbowItem.ChargingSounds sounds = ((CrossbowItemAccessor) this).doGetChargingSounds(itemStack);
+        CrossbowItem.ChargingSounds sounds = CrossbowItemAccessor.doGetChargingSounds(itemStack);
         float tickPercent = (float) (itemStack.getUseDuration(entity) - ticksRemaining) / ModiumCrossBowItem.getChargeDuration(itemStack, entity);
         if (tickPercent < 0.2F) {
             ((CrossbowItemAccessor) this).setStartSoundPlayed(false);

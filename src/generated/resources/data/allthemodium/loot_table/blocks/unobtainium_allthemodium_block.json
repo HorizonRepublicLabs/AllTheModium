@@ -2,18 +2,16 @@
   "type": "minecraft:block",
   "pools": [
     {
-      "conditions": [
-        {
-          "condition": "minecraft:survives_explosion"
-        }
-      ],
+      "condition": {
+        "type": "minecraft:survives_explosion"
+      },
       "entries": [
         {
           "type": "minecraft:item",
           "name": "allthemodium:unobtainium_allthemodium_block"
         }
       ],
-      "rolls": 1.0
+      "rolls": 1
     }
   ],
   "random_sequence": "allthemodium:blocks/unobtainium_allthemodium_block"

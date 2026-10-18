@@ -3,7 +3,7 @@ package net.allthemods.allthemodium.data.provider.loot;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
 import net.minecraft.advancements.predicates.StatePropertiesPredicate;
-import net.minecraft.core.HolderLookup;
+import net.minecraft.data.loot.LootTableSubProvider;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.flag.FeatureFlags;
@@ -12,7 +12,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
-import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
+import net.minecraft.world.level.storage.loot.predicates.MatchBlock;
 
 import net.allthemods.allthemodium.common.blocks.AncientCaveVines;
 import net.allthemods.allthemodium.core.registry.ATMBlocks;
@@ -21,19 +21,18 @@ import net.allthemods.allthemodium.core.registry.ATMItems;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
-import java.util.function.BiConsumer;
 
 public class ATMBlockLoot extends BlockLootSubProvider {
     private final Map<ResourceKey<LootTable>, LootTable.Builder> tables = new HashMap<>();
     
-    protected ATMBlockLoot(HolderLookup.Provider registries) {
-        super(Set.of(), FeatureFlags.DEFAULT_FLAGS, registries);
+    public ATMBlockLoot(LootTableSubProvider.Context output) {
+        super(Set.of(), FeatureFlags.DEFAULT_FLAGS, output);
     }
     
     @Override
-    public void generate(BiConsumer<ResourceKey<LootTable>, LootTable.Builder> output) {
+    public void run() {
         this.generate();
-        this.tables.forEach(output);
+        this.tables.forEach(this.output::accept);
     }
     
     @Override
@@ -170,11 +169,9 @@ public class ATMBlockLoot extends BlockLootSubProvider {
         return LootTable.lootTable()
                 .withPool(LootPool.lootPool()
                         .add(LootItem.lootTableItem(ATMItems.SOUL_BERRIES.get())
-                                .when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)
-                                        .setProperties(StatePropertiesPredicate.Builder.properties()
-                                                .hasProperty(AncientCaveVines.BERRIES, true)
-                                        )
-                                )
+                                .when(MatchBlock.blockMatches(this.blocks, block, StatePropertiesPredicate.Builder.properties()
+                                        .hasProperty(AncientCaveVines.BERRIES, true)
+                                ))
                         )
                 );
     }

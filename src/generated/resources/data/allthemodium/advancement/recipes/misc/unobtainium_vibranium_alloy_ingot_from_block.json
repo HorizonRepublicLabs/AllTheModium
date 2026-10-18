@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "allthemodium:unobtainium_vibranium_alloy_ingot_from_block"
+        "recipes": "allthemodium:unobtainium_vibranium_alloy_ingot_from_block"
       },
       "trigger": "minecraft:recipe_unlocked"
     },

@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "allthemodium:chiseled_ancient_stone_brick_wall_from_stone_cutting"
+        "recipes": "allthemodium:chiseled_ancient_stone_brick_wall_from_stone_cutting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

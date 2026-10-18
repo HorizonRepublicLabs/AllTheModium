@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "allthemodium:polished_ancient_stone_slab"
+        "recipes": "allthemodium:polished_ancient_stone_slab"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

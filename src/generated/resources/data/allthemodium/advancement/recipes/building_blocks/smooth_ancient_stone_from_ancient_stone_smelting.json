@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "allthemodium:smooth_ancient_stone_from_ancient_stone_smelting"
+        "recipes": "allthemodium:smooth_ancient_stone_from_ancient_stone_smelting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

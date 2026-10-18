@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "allthemodium:soul_slab"
+        "recipes": "allthemodium:soul_slab"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

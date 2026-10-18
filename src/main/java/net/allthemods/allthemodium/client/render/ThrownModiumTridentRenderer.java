@@ -30,8 +30,8 @@ public class ThrownModiumTridentRenderer extends EntityRenderer<ThrownModiumTrid
     @Override
     public void submit(RenderState state, PoseStack poseStack, SubmitNodeCollector collector, @NonNull CameraRenderState camera) {
         poseStack.pushPose();
-        poseStack.mulPose(Axis.YP.rotationDegrees(state.yRot + 90.0F));
-        poseStack.mulPose(Axis.ZN.rotationDegrees(state.xRot - 90.0F));
+        poseStack.rotateDegrees(Axis.YP, state.yRot + 90.0F);
+        poseStack.rotateDegrees(Axis.ZN, state.xRot - 90.0F);
         poseStack.translate(0.0D, -0.75D, 0.0D);
         state.item.submit(poseStack, collector, state.lightCoords, OverlayTexture.NO_OVERLAY, state.outlineColor);
         poseStack.popPose();

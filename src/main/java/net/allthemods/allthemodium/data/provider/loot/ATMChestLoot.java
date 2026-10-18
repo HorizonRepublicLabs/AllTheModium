@@ -1,6 +1,6 @@
 package net.allthemods.allthemodium.data.provider.loot;
 
-import net.minecraft.core.HolderLookup;
+import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.loot.LootTableSubProvider;
 import net.minecraft.resources.ResourceKey;
@@ -9,18 +9,20 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
-import net.minecraft.world.level.storage.loot.entries.LootPoolSingletonContainer;
+import net.minecraft.world.level.storage.loot.entries.UniformContainerBase;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.storage.loot.functions.EnchantWithLevelsFunction;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
-import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
-import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders;
 
 import net.allthemods.allthemodium.api.ATM;
 import net.allthemods.allthemodium.core.registry.ATMItems;
 
-import java.util.function.BiConsumer;
 
-public record ATMChestLoot(HolderLookup.Provider registries) implements LootTableSubProvider {
+public class ATMChestLoot implements LootTableSubProvider {
+    
+    private final LootTableSubProvider.Context output;
+    private final HolderGetter<Enchantment> enchantments;
     
     public static final ResourceKey<LootTable> ARCH = ATMChestLoot.create("arch");
     public static final ResourceKey<LootTable> ARCH2 = ATMChestLoot.create("arch2");
@@ -32,8 +34,14 @@ public record ATMChestLoot(HolderLookup.Provider registries) implements LootTabl
     public static final ResourceKey<LootTable> TREASURE_ROOM = ATMChestLoot.create("chest/treasure_room");
     public static final ResourceKey<LootTable> TREASURE_ROOM_LOOT = ATMChestLoot.create("chest/treasure_room_loot");
     
+    public ATMChestLoot(LootTableSubProvider.Context output) {
+        this.output = output;
+        this.enchantments = output.lookup(Registries.ENCHANTMENT);
+    }
+    
     @Override
-    public void generate(BiConsumer<ResourceKey<LootTable>, LootTable.Builder> output) {
+    public void run() {
+        LootTableSubProvider.Context output = this.output;
         output.accept(ATMChestLoot.ARCH, ATMChestLoot.singleItemTable(ATMItems.ALLTHEMODIUM_SMITHING_TEMPLATE.get()));
         output.accept(ATMChestLoot.ARCH2, ATMChestLoot.singleItemTable(ATMItems.VIBRANIUM_SMITHING_TEMPLATE.get()));
         output.accept(ATMChestLoot.GENERIC_LOOT, this.commonLootTable(8, true));
@@ -46,7 +54,7 @@ public record ATMChestLoot(HolderLookup.Provider registries) implements LootTabl
     
     private LootTable.Builder commonLootTable(int maxRolls, boolean includeGoldenApple) {
         LootPool.Builder pool = LootPool.lootPool()
-                .setRolls(UniformGenerator.between(1.0F, maxRolls))
+                .setRolls(ContextIntProviders.between(1, maxRolls))
                 .add(this.weightedItem(ATMItems.VIBRANIUM_NUGGET.get(), 10, 4, 8))
                 .add(this.weightedItem(Items.GOLD_INGOT, 7, 64, 128))
                 .add(this.weightedItem(Items.GOLD_NUGGET, 12, 64, 128))
@@ -68,22 +76,22 @@ public record ATMChestLoot(HolderLookup.Provider registries) implements LootTabl
         return LootTable.lootTable().withPool(pool);
     }
     
-    private LootPoolSingletonContainer.Builder<?> weightedItem(ItemLike item, int weight, int min, int max) {
+    private UniformContainerBase.Builder<?> weightedItem(ItemLike item, int weight, int min, int max) {
         return LootItem.lootTableItem(item)
                 .setWeight(weight)
-                .apply(SetItemCountFunction.setCount(UniformGenerator.between(min, max)));
+                .apply(SetItemCountFunction.setCount(ContextIntProviders.between(min, max)));
     }
     
-    private LootPoolSingletonContainer.Builder<?> enchantedItem(ItemLike item, int weight, int levels) {
+    private UniformContainerBase.Builder<?> enchantedItem(ItemLike item, int weight, int levels) {
         return LootItem.lootTableItem(item)
                 .setWeight(weight)
-                .apply(EnchantWithLevelsFunction.enchantWithLevels(this.registries, ConstantValue.exactly(levels)));
+                .apply(EnchantWithLevelsFunction.enchantWithLevels(this.enchantments, ContextIntProviders.exactly(levels)));
     }
     
     private static LootTable.Builder singleItemTable(ItemLike item) {
         return LootTable.lootTable()
                 .withPool(LootPool.lootPool()
-                        .setRolls(ConstantValue.exactly(1.0F))
+                        .setRolls(ContextIntProviders.exactly(1))
                         .add(LootItem.lootTableItem(item)));
     }
     

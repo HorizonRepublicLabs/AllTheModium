@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "allthemodium:ancient_bookshelf"
+        "recipes": "allthemodium:ancient_bookshelf"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

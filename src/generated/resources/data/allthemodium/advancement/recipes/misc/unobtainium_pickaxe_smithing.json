@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "allthemodium:unobtainium_pickaxe_smithing"
+        "recipes": "allthemodium:unobtainium_pickaxe_smithing"
       },
       "trigger": "minecraft:recipe_unlocked"
     },

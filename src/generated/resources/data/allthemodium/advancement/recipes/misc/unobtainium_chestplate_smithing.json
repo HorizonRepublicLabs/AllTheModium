@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "allthemodium:unobtainium_chestplate_smithing"
+        "recipes": "allthemodium:unobtainium_chestplate_smithing"
       },
       "trigger": "minecraft:recipe_unlocked"
     },

@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "allthemodium:unobtainium_rod"
+        "recipes": "allthemodium:unobtainium_rod"
       },
       "trigger": "minecraft:recipe_unlocked"
     },

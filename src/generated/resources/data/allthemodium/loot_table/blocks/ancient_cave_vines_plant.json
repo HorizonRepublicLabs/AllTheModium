@@ -5,19 +5,17 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "conditions": [
-            {
-              "block": "allthemodium:ancient_cave_vines_plant",
-              "condition": "minecraft:block_state_property",
-              "properties": {
-                "berries": "true"
-              }
+          "condition": {
+            "type": "minecraft:match_block",
+            "blocks": "allthemodium:ancient_cave_vines_plant",
+            "state": {
+              "berries": "true"
             }
-          ],
+          },
           "name": "allthemodium:soul_berries"
         }
       ],
-      "rolls": 1.0
+      "rolls": 1
     }
   ],
   "random_sequence": "allthemodium:blocks/ancient_cave_vines_plant"

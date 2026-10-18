@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "allthemodium:soul_planks_1_from_shapelesscrafting"
+        "recipes": "allthemodium:soul_planks_1_from_shapelesscrafting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

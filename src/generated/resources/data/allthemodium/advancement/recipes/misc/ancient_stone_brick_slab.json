@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "allthemodium:ancient_stone_brick_slab"
+        "recipes": "allthemodium:ancient_stone_brick_slab"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

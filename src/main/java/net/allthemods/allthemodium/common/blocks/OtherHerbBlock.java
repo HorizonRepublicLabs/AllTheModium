@@ -13,21 +13,15 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 import net.allthemods.allthemodium.core.registry.ATMTags;
 
-import com.mojang.serialization.MapCodec;
 
 public class OtherHerbBlock extends VegetationBlock {
     
-    private static final MapCodec<OtherHerbBlock> CODEC = BlockBehaviour.simpleCodec(OtherHerbBlock::new);
     private static final VoxelShape SHAPE = Block.column(12.0D, 0.0D, 13.0D);
     
     public OtherHerbBlock(Properties properties) {
         super(properties);
     }
     
-    @Override
-    public MapCodec<OtherHerbBlock> codec() {
-        return OtherHerbBlock.CODEC;
-    }
     
     @Override
     protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {

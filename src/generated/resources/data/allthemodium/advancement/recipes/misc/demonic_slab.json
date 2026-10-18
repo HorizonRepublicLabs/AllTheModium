@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "allthemodium:demonic_slab"
+        "recipes": "allthemodium:demonic_slab"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

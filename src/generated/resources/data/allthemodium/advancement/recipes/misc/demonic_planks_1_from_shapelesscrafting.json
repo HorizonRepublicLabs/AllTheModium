@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "allthemodium:demonic_planks_1_from_shapelesscrafting"
+        "recipes": "allthemodium:demonic_planks_1_from_shapelesscrafting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

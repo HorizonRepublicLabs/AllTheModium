@@ -23,6 +23,7 @@ import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.TrapDoorBlock;
 import net.minecraft.world.level.block.WallBlock;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.util.random.WeightedList;
 import net.minecraft.world.level.block.grower.TreeGrower;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
@@ -86,8 +87,8 @@ public class ATMBlocks {
     public static final DeferredHolder<Block, Block> ANCIENT_PODZOL = ATMBlocks.register("ancient_podzol", Block::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.PODZOL));
     
     public static final DeferredHolder<Block, OtherSaplingBlock> ANCIENT_SAPLING = ATMBlocks.register("ancient_sapling", p -> new OtherSaplingBlock(
-            new TreeGrower("ancient_tree", 0.9F, Optional.empty(), Optional.empty(), Optional.of(ATMConfiguredFeatures.ANCIENT_TREE), Optional.empty(), Optional.empty(), Optional.empty()),
-            p.mapColor(MapColor.PLANT).noCollision().randomTicks().instabreak().sound(SoundType.GRASS).pushReaction(PushReaction.DESTROY))
+            new TreeGrower("ancient_tree", WeightedList.of(ATMConfiguredFeatures.ANCIENT_TREE), WeightedList.of(), WeightedList.of(), ATMConfiguredFeatures.ANCIENT_TREE),
+            p.mapColor(MapColor.PLANT).noCollision().randomTicks().instabreak().sound(SoundType.GRASS).pushReaction(PushReaction.POPPED))
     );
     public static final DeferredHolder<Block, OtherHerbBlock> ANCIENT_HERB = ATMBlocks.register("ancient_herb", p -> new OtherHerbBlock(p.sound(SoundType.WET_GRASS).instabreak().noCollision()));
     public static final DeferredHolder<Block, AncientFernBlock> ANCIENT_FERN = ATMBlocks.register("ancient_fern", AncientFernBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.FERN));
@@ -136,8 +137,8 @@ public class ATMBlocks {
     public static final DeferredHolder<Block, SlabBlock> POLISHED_ANCIENT_STONE_SLAB = ATMBlocks.register("polished_ancient_stone_slab", OtherSlabBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(ATMBlocks.POLISHED_ANCIENT_STONE.get()));
     
     public static final DeferredHolder<Block, OtherSaplingBlock> SOUL_SAPLING = ATMBlocks.register("soul_sapling", p -> new OtherSaplingBlock(
-            new TreeGrower("soul_tree", 0.9F, Optional.empty(), Optional.empty(), Optional.of(ATMConfiguredFeatures.SOUL_TREE), Optional.empty(), Optional.empty(), Optional.empty()),
-            p.mapColor(MapColor.PLANT).noCollision().randomTicks().instabreak().sound(SoundType.GRASS).pushReaction(PushReaction.DESTROY))
+            new TreeGrower("soul_tree", WeightedList.of(ATMConfiguredFeatures.SOUL_TREE), WeightedList.of(), WeightedList.of(), ATMConfiguredFeatures.SOUL_TREE),
+            p.mapColor(MapColor.PLANT).noCollision().randomTicks().instabreak().sound(SoundType.GRASS).pushReaction(PushReaction.POPPED))
     );
     public static final DeferredHolder<Block, OtherHerbBlock> SOUL_HERB = ATMBlocks.register("soul_herb", p -> new OtherHerbBlock(p.sound(SoundType.WET_GRASS).instabreak().noCollision()));
     public static final DeferredHolder<Block, RotatedPillarBlock> SOUL_LOG_0 = ATMBlocks.register("soul_log_0", p -> new RotatedPillarBlock(p.sound(SoundType.WOOD).strength(2.0F).mapColor(DyeColor.LIGHT_BLUE)));
@@ -156,8 +157,8 @@ public class ATMBlocks {
     public static final DeferredHolder<Block, SlabBlock> SOUL_SLAB = ATMBlocks.register("soul_slab", SlabBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(ATMBlocks.SOUL_PLANKS.get()));
     
     public static final DeferredHolder<Block, OtherSaplingBlock> DEMONIC_SAPLING = ATMBlocks.register("demonic_sapling", p -> new OtherSaplingBlock(
-            new TreeGrower("demonic_tree", 0.9F, Optional.empty(), Optional.empty(), Optional.of(ATMConfiguredFeatures.DEMONIC_TREE), Optional.empty(), Optional.empty(), Optional.empty()),
-            p.mapColor(MapColor.PLANT).noCollision().randomTicks().instabreak().sound(SoundType.GRASS).pushReaction(PushReaction.DESTROY))
+            new TreeGrower("demonic_tree", WeightedList.of(ATMConfiguredFeatures.DEMONIC_TREE), WeightedList.of(), WeightedList.of(), ATMConfiguredFeatures.DEMONIC_TREE),
+            p.mapColor(MapColor.PLANT).noCollision().randomTicks().instabreak().sound(SoundType.GRASS).pushReaction(PushReaction.POPPED))
     );
     public static final DeferredHolder<Block, OtherHerbBlock> DEMONIC_HERB = ATMBlocks.register("demonic_herb", p -> new OtherHerbBlock(p.sound(SoundType.WET_GRASS).instabreak().noCollision()));
     public static final DeferredHolder<Block, RotatedPillarBlock> DEMONIC_LOG = ATMBlocks.register("demonic_log", p -> new RotatedPillarBlock(p.sound(SoundType.WOOD).strength(2.0F).mapColor(DyeColor.RED)));
@@ -180,7 +181,7 @@ public class ATMBlocks {
     public static final DeferredHolder<Block, TeleportPad> TELEPORT_PAD = ATMBlocks.register("teleport_pad", TeleportPad::new);
     
     public static BlockBehaviour.Properties suspicious(BlockBehaviour.Properties properties) {
-        return properties.mapColor(MapColor.SAND).instrument(NoteBlockInstrument.SNARE).strength(0.25F).sound(SoundType.SUSPICIOUS_SAND).pushReaction(PushReaction.DESTROY);
+        return properties.mapColor(MapColor.SAND).instrument(NoteBlockInstrument.SNARE).strength(0.25F).sound(SoundType.SUSPICIOUS_SAND).pushReaction(PushReaction.POPPED);
     }
     
     private static <T extends Block> DeferredHolder<Block, T> register(String name, Function<BlockBehaviour.Properties, T> factory) {

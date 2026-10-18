@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "allthemodium:vibranium_axe_smithing"
+        "recipes": "allthemodium:vibranium_axe_smithing"
       },
       "trigger": "minecraft:recipe_unlocked"
     },

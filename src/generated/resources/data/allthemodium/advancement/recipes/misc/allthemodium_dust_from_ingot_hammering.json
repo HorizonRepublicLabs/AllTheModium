@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "allthemodium:allthemodium_dust_from_ingot_hammering"
+        "recipes": "allthemodium:allthemodium_dust_from_ingot_hammering"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

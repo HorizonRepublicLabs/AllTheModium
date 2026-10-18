@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "allthemodium:cracked_ancient_stone_bricks_from_crushing"
+        "recipes": "allthemodium:cracked_ancient_stone_bricks_from_crushing"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

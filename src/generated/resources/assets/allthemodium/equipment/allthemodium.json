@@ -21,5 +21,13 @@
         "texture": "allthemodium:allthemodium"
       }
     ]
-  }
+  },
+  "trim_overrides": [
+    {
+      "palette": "allthemodium:trim/allthemodium_darker",
+      "when": {
+        "material": "allthemodium:allthemodium"
+      }
+    }
+  ]
 }

@@ -1,0 +1,193 @@
+{
+  "values": {
+    "allthemodium:ancient_log_0": {
+      "transform_data": {
+        "block_state_provider": {
+          "type": "minecraft:rule_based",
+          "rules": [
+            {
+              "if_true": {
+                "type": "minecraft:matching_blocks",
+                "blocks": "allthemodium:ancient_log_0"
+              },
+              "then": {
+                "type": "minecraft:copy_properties",
+                "source": {
+                  "id": "allthemodium:stripped_ancient_log",
+                  "properties": {
+                    "axis": "y"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "item_damage_per_use": 1,
+        "sound": "minecraft:item.axe.strip"
+      },
+      "transformer": "minecraft:axe"
+    },
+    "allthemodium:ancient_log_1": {
+      "transform_data": {
+        "block_state_provider": {
+          "type": "minecraft:rule_based",
+          "rules": [
+            {
+              "if_true": {
+                "type": "minecraft:matching_blocks",
+                "blocks": "allthemodium:ancient_log_1"
+              },
+              "then": {
+                "type": "minecraft:copy_properties",
+                "source": {
+                  "id": "allthemodium:stripped_ancient_log",
+                  "properties": {
+                    "axis": "y"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "item_damage_per_use": 1,
+        "sound": "minecraft:item.axe.strip"
+      },
+      "transformer": "minecraft:axe"
+    },
+    "allthemodium:ancient_log_2": {
+      "transform_data": {
+        "block_state_provider": {
+          "type": "minecraft:rule_based",
+          "rules": [
+            {
+              "if_true": {
+                "type": "minecraft:matching_blocks",
+                "blocks": "allthemodium:ancient_log_2"
+              },
+              "then": {
+                "type": "minecraft:copy_properties",
+                "source": {
+                  "id": "allthemodium:stripped_ancient_log",
+                  "properties": {
+                    "axis": "y"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "item_damage_per_use": 1,
+        "sound": "minecraft:item.axe.strip"
+      },
+      "transformer": "minecraft:axe"
+    },
+    "allthemodium:demonic_log": {
+      "transform_data": {
+        "block_state_provider": {
+          "type": "minecraft:rule_based",
+          "rules": [
+            {
+              "if_true": {
+                "type": "minecraft:matching_blocks",
+                "blocks": "allthemodium:demonic_log"
+              },
+              "then": {
+                "type": "minecraft:copy_properties",
+                "source": {
+                  "id": "allthemodium:stripped_demonic_log",
+                  "properties": {
+                    "axis": "y"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "item_damage_per_use": 1,
+        "sound": "minecraft:item.axe.strip"
+      },
+      "transformer": "minecraft:axe"
+    },
+    "allthemodium:soul_log_0": {
+      "transform_data": {
+        "block_state_provider": {
+          "type": "minecraft:rule_based",
+          "rules": [
+            {
+              "if_true": {
+                "type": "minecraft:matching_blocks",
+                "blocks": "allthemodium:soul_log_0"
+              },
+              "then": {
+                "type": "minecraft:copy_properties",
+                "source": {
+                  "id": "allthemodium:stripped_soul_log",
+                  "properties": {
+                    "axis": "y"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "item_damage_per_use": 1,
+        "sound": "minecraft:item.axe.strip"
+      },
+      "transformer": "minecraft:axe"
+    },
+    "allthemodium:soul_log_1": {
+      "transform_data": {
+        "block_state_provider": {
+          "type": "minecraft:rule_based",
+          "rules": [
+            {
+              "if_true": {
+                "type": "minecraft:matching_blocks",
+                "blocks": "allthemodium:soul_log_1"
+              },
+              "then": {
+                "type": "minecraft:copy_properties",
+                "source": {
+                  "id": "allthemodium:stripped_soul_log",
+                  "properties": {
+                    "axis": "y"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "item_damage_per_use": 1,
+        "sound": "minecraft:item.axe.strip"
+      },
+      "transformer": "minecraft:axe"
+    },
+    "allthemodium:soul_log_2": {
+      "transform_data": {
+        "block_state_provider": {
+          "type": "minecraft:rule_based",
+          "rules": [
+            {
+              "if_true": {
+                "type": "minecraft:matching_blocks",
+                "blocks": "allthemodium:soul_log_2"
+              },
+              "then": {
+                "type": "minecraft:copy_properties",
+                "source": {
+                  "id": "allthemodium:stripped_soul_log",
+                  "properties": {
+                    "axis": "y"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "item_damage_per_use": 1,
+        "sound": "minecraft:item.axe.strip"
+      },
+      "transformer": "minecraft:axe"
+    }
+  }
+}

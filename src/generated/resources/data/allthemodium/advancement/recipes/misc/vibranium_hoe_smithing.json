@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "allthemodium:vibranium_hoe_smithing"
+        "recipes": "allthemodium:vibranium_hoe_smithing"
       },
       "trigger": "minecraft:recipe_unlocked"
     },

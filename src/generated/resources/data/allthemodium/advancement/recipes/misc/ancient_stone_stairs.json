@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "allthemodium:ancient_stone_stairs"
+        "recipes": "allthemodium:ancient_stone_stairs"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

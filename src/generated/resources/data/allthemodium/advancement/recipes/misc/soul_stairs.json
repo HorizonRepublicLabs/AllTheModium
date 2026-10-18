@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "allthemodium:soul_stairs"
+        "recipes": "allthemodium:soul_stairs"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

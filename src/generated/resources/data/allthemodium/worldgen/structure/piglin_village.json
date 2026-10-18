@@ -10,8 +10,11 @@
       "spawns": [
         {
           "type": "minecraft:piglin",
-          "maxCount": 10,
-          "minCount": 5,
+          "count": {
+            "type": "minecraft:uniform",
+            "max_inclusive": 10,
+            "min_inclusive": 5
+          },
           "weight": 200
         }
       ]

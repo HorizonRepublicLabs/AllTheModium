@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "allthemodium:ancient_trapdoor"
+        "recipes": "allthemodium:ancient_trapdoor"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

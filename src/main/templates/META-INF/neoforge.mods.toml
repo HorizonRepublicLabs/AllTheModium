@@ -38,7 +38,7 @@ requiredMods=["lootr"]
 [[dependencies.${mod_id}]]
     modId="geckolib"
     type="required"
-    versionRange="[5.5.4,)"
+    versionRange="[5.5.6,)"
     ordering="NONE"
     side="BOTH"
 

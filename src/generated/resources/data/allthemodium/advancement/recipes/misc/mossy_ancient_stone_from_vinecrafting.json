@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "allthemodium:mossy_ancient_stone_from_vinecrafting"
+        "recipes": "allthemodium:mossy_ancient_stone_from_vinecrafting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

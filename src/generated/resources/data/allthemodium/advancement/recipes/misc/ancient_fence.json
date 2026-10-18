@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "allthemodium:ancient_fence"
+        "recipes": "allthemodium:ancient_fence"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

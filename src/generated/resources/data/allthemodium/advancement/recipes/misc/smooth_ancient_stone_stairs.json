@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "allthemodium:smooth_ancient_stone_stairs"
+        "recipes": "allthemodium:smooth_ancient_stone_stairs"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

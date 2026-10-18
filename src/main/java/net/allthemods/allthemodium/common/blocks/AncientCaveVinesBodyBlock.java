@@ -10,6 +10,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.BonemealSource;
 import net.minecraft.world.level.block.GrowingPlantBodyBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -20,11 +21,9 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.allthemods.allthemodium.core.registry.ATMBlocks;
 import net.allthemods.allthemodium.core.registry.ATMItems;
 
-import com.mojang.serialization.MapCodec;
 
 public class AncientCaveVinesBodyBlock extends GrowingPlantBodyBlock implements AncientCaveVines {
     
-    public static final MapCodec<AncientCaveVinesBodyBlock> CODEC = BlockBehaviour.simpleCodec(AncientCaveVinesBodyBlock::new);
     
     public AncientCaveVinesBodyBlock(Properties properties) {
         super(properties.noCollision()
@@ -36,10 +35,6 @@ public class AncientCaveVinesBodyBlock extends GrowingPlantBodyBlock implements 
         this.registerDefaultState(this.stateDefinition.any().setValue(AncientCaveVines.BERRIES, false));
     }
     
-    @Override
-    protected MapCodec<AncientCaveVinesBodyBlock> codec() {
-        return AncientCaveVinesBodyBlock.CODEC;
-    }
     
     @Override
     protected AncientCaveVinesHeadBlock getHeadBlock() {
@@ -67,12 +62,12 @@ public class AncientCaveVinesBodyBlock extends GrowingPlantBodyBlock implements 
     }
     
     @Override
-    public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state) {
+    public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state, BonemealSource source) {
         return !state.getValue(AncientCaveVines.BERRIES);
     }
     
     @Override
-    public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state) {
+    public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state, BonemealSource source) {
         level.setBlock(pos, state.setValue(AncientCaveVines.BERRIES, true), Block.UPDATE_CLIENTS);
     }
 }

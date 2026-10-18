@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "allthemodium:unobtainium_dust_from_ingot_hammering"
+        "recipes": "allthemodium:unobtainium_dust_from_ingot_hammering"
       },
       "trigger": "minecraft:recipe_unlocked"
     },

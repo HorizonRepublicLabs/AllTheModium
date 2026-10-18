@@ -8,6 +8,7 @@ import net.minecraft.world.item.equipment.EquipmentAsset;
 
 import net.allthemods.allthemodium.api.ATM;
 import net.allthemods.allthemodium.core.registry.ATMArmorMaterials;
+import net.allthemods.allthemodium.core.registry.ATMTrimMaterials;
 
 import java.util.function.BiConsumer;
 
@@ -23,6 +24,7 @@ public class ATMEquipmentAssetProvider extends EquipmentAssetProvider {
                 EquipmentClientInfo.builder()
                         .addMainHumanoidLayer(ATM.id("allthemodium_base"), false)
                         .addHumanoidLayers(ATM.id("allthemodium"))
+                        .replaceTrimPalette(ATMTrimMaterials.ALLTHEMODIUM, ATMTrimMaterials.ALLTHEMODIUM_DARKER_PALETTE)
                         .build()
         );
         output.accept(ATMArmorMaterials.VIBRANIUM_ASSET, EquipmentClientInfo.builder().addHumanoidLayers(ATM.id("vibranium")).build());

@@ -40,7 +40,7 @@ public class ATMMaterialsProvider extends MaterialsProviderBase {
     }
 
     public static void register(GatherDataEvent event) {
-        event.addProvider(new ATMMaterialsProvider(event.getGenerator(), event.getLookupProvider()));
+        event.addProvider(new ATMMaterialsProvider(event.getGenerator(), event.getReloadableLookupProvider()));
     }
 
     @Override

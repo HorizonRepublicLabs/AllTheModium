@@ -6,21 +6,20 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.BonemealSource;
 import net.minecraft.world.level.block.GrassBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+import net.minecraft.world.level.levelgen.feature.Feature;
 
 import net.allthemods.allthemodium.core.registry.ATMBlocks;
 import net.allthemods.allthemodium.data.worldgen.ATMConfiguredFeatures;
 
-import com.mojang.serialization.MapCodec;
 
 import java.util.Optional;
 
 public class AncientGrassBlock extends GrassBlock {
     
-    private static final MapCodec<GrassBlock> CODEC = BlockBehaviour.simpleCodec(AncientGrassBlock::new);
     private static final int BONEMEAL_TRIES = 128;
     private static final int SPREAD_TRIES = 4;
     private static final int SPREAD_MIN_LIGHT = 9;
@@ -29,10 +28,6 @@ public class AncientGrassBlock extends GrassBlock {
         super(properties);
     }
     
-    @Override
-    public MapCodec<GrassBlock> codec() {
-        return AncientGrassBlock.CODEC;
-    }
     
     @Override
     protected void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
@@ -52,9 +47,9 @@ public class AncientGrassBlock extends GrassBlock {
     }
     
     @Override
-    public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state) {
-        Optional<Holder.Reference<ConfiguredFeature<?, ?>>> feature = level.registryAccess()
-                .lookupOrThrow(Registries.CONFIGURED_FEATURE)
+    public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state, BonemealSource source) {
+        Optional<Holder.Reference<Feature>> feature = level.registryAccess()
+                .lookupOrThrow(Registries.FEATURE)
                 .get(ATMConfiguredFeatures.ANCIENT_GRASS_BONEMEAL);
         if (feature.isEmpty()) return;
         

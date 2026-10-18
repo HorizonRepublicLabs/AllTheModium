@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "allthemodium:silent_unobtainium_plate_smithing"
+        "recipes": "allthemodium:silent_unobtainium_plate_smithing"
       },
       "trigger": "minecraft:recipe_unlocked"
     },

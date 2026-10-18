@@ -10,6 +10,7 @@ import net.minecraft.world.entity.EntityTypes;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.MobSpawnSettings;
+import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.structure.Structure;
@@ -41,7 +42,7 @@ public class ATMStructures {
                         .spawnOverrides(Map.of(MobCategory.MONSTER, new StructureSpawnOverride(
                                 StructureSpawnOverride.BoundingBoxType.PIECE,
                                 WeightedList.<MobSpawnSettings.SpawnerData>builder()
-                                        .add(new MobSpawnSettings.SpawnerData(ATMEntities.PIGLICH.get(), 1, 1), 4500)
+                                        .add(new MobSpawnSettings.SpawnerData(ATMEntities.PIGLICH.get(), UniformInt.of(1, 1)), 4500)
                                         .build()
                         )))
                         .generationStep(GenerationStep.Decoration.SURFACE_STRUCTURES)
@@ -71,7 +72,7 @@ public class ATMStructures {
                         .spawnOverrides(Map.of(MobCategory.MONSTER, new StructureSpawnOverride(
                                 StructureSpawnOverride.BoundingBoxType.PIECE,
                                 WeightedList.<MobSpawnSettings.SpawnerData>builder()
-                                        .add(new MobSpawnSettings.SpawnerData(EntityTypes.PIGLIN, 5, 10), 200)
+                                        .add(new MobSpawnSettings.SpawnerData(EntityTypes.PIGLIN, UniformInt.of(5, 10)), 200)
                                         .build()
                         )))
                         .generationStep(GenerationStep.Decoration.UNDERGROUND_STRUCTURES)

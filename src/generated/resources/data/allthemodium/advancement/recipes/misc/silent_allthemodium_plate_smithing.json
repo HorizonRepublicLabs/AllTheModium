@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "allthemodium:silent_allthemodium_plate_smithing"
+        "recipes": "allthemodium:silent_allthemodium_plate_smithing"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

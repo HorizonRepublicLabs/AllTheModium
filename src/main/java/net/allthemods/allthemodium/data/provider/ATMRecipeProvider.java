@@ -11,6 +11,9 @@ import net.minecraft.data.recipes.RecipeBuilder;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
+import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.advancements.Advancement;
+import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
@@ -30,19 +33,13 @@ import net.allthemods.allthemodium.core.registry.ATMItems;
 import net.allthemods.allthemodium.core.registry.ATMTags;
 import net.allthemods.alltheores.core.registry.ATORegistry;
 
-import java.util.concurrent.CompletableFuture;
 
 public class ATMRecipeProvider extends RecipeProvider {
     
     private static final String GROUP = ATM.MOD_ID;
     
-    private final HolderGetter<Item> items;
-    private final RecipeOutput output;
-    
-    public ATMRecipeProvider(HolderLookup.Provider lookupProvider, RecipeOutput output) {
-        super(lookupProvider, output);
-        this.items = lookupProvider.lookupOrThrow(Registries.ITEM);
-        this.output = output;
+    public ATMRecipeProvider(BootstrapContext<Recipe<?>> recipes, BootstrapContext<Advancement> advancements) {
+        super(recipes, advancements);
     }
     
     @Override
@@ -742,19 +739,4 @@ public class ATMRecipeProvider extends RecipeProvider {
         return TagKey.create(Registries.ITEM, tag.location());
     }
     
-    public static class Runner extends RecipeProvider.Runner {
-        public Runner(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
-            super(output, lookupProvider);
-        }
-        
-        @Override
-        protected RecipeProvider createRecipeProvider(HolderLookup.Provider lookupProvider, RecipeOutput output) {
-            return new ATMRecipeProvider(lookupProvider, output);
-        }
-        
-        @Override
-        public String getName() {
-            return "AllTheModium recipes";
-        }
-    }
 }

@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "allthemodium:unobtainium_upgrade_smithing_template"
+        "recipes": "allthemodium:unobtainium_upgrade_smithing_template"
       },
       "trigger": "minecraft:recipe_unlocked"
     },

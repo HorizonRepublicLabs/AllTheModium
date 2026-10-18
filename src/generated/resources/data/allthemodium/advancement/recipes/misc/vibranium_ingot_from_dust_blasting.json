@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "allthemodium:vibranium_ingot_from_dust_blasting"
+        "recipes": "allthemodium:vibranium_ingot_from_dust_blasting"
       },
       "trigger": "minecraft:recipe_unlocked"
     },

@@ -55,7 +55,7 @@ import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+import net.minecraft.world.level.levelgen.feature.Feature;
 
 import net.allthemods.allthemodium.api.ATM;
 import net.allthemods.allthemodium.client.lang.ATMLanguage;
@@ -239,7 +239,7 @@ public final class ATMEventListener {
             final BlockState state = event.getState();
             final BlockPos pos = event.getPos();
             final Holder<Biome> biome = level.getBiome(pos);
-            final ResourceKey<ConfiguredFeature<?, ?>> feature;
+            final ResourceKey<Feature> feature;
             if (state.is(Blocks.CRIMSON_NYLIUM) && biome.is(ATMBiomes.CRIMSON_FOREST)) {
                 feature = ATMConfiguredFeatures.CRIMSON_FOREST_BONEMEAL;
             } else if (state.is(Blocks.WARPED_NYLIUM) && biome.is(ATMBiomes.WARPED_FOREST)) {
@@ -248,7 +248,7 @@ public final class ATMEventListener {
                 return;
             }
 
-            level.registryAccess().lookupOrThrow(Registries.CONFIGURED_FEATURE).get(feature)
+            level.registryAccess().lookupOrThrow(Registries.FEATURE).get(feature)
                     .ifPresent(holder -> holder.value().place(level, level.getChunkSource().getGenerator(), level.getRandom(), pos.above()));
         }
 

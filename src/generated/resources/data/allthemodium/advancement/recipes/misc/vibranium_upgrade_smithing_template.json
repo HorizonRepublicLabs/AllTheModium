@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "allthemodium:vibranium_upgrade_smithing_template"
+        "recipes": "allthemodium:vibranium_upgrade_smithing_template"
       },
       "trigger": "minecraft:recipe_unlocked"
     },

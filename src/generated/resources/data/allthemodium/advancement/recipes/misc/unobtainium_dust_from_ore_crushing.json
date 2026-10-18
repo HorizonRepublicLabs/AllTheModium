@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "allthemodium:unobtainium_dust_from_ore_crushing"
+        "recipes": "allthemodium:unobtainium_dust_from_ore_crushing"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

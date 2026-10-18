@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "allthemodium:demonic_fence"
+        "recipes": "allthemodium:demonic_fence"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

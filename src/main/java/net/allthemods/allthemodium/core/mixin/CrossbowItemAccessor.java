@@ -24,7 +24,9 @@ public interface CrossbowItemAccessor {
     void setMidLoadSoundPlayed(boolean midLoadSoundPlayed);
     
     @Invoker("getChargingSounds")
-    CrossbowItem.ChargingSounds doGetChargingSounds(ItemStack itemStack);
+    static CrossbowItem.ChargingSounds doGetChargingSounds(ItemStack itemStack) {
+        throw new AssertionError();
+    }
     
     @Invoker("tryLoadProjectiles")
     static boolean doTryLoadProjectiles(LivingEntity shooter, ItemStack heldItem) {

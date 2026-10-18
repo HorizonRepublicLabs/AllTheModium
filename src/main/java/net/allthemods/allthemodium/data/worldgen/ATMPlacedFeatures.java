@@ -12,7 +12,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.heightproviders.BiasedToBottomHeight;
 import net.minecraft.world.level.levelgen.placement.BiomeFilter;
 import net.minecraft.world.level.levelgen.placement.CountOnEveryLayerPlacement;
@@ -22,7 +22,7 @@ import net.minecraft.world.level.levelgen.placement.HeightRangePlacement;
 import net.minecraft.world.level.levelgen.placement.InSquarePlacement;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.levelgen.placement.PlacementModifier;
-import net.minecraft.world.level.levelgen.placement.RandomOffsetPlacement;
+import net.minecraft.world.level.levelgen.placement.OffsetPlacement;
 import net.minecraft.world.level.levelgen.placement.RarityFilter;
 import net.minecraft.world.level.levelgen.placement.SurfaceWaterDepthFilter;
 
@@ -101,7 +101,7 @@ public class ATMPlacedFeatures {
     public static final ResourceKey<PlacedFeature> ORE_ANCIENT_DEBRIS_LARGE = ATMPlacedFeatures.create("mining/ore_ancient_debris_large");
     
     public static void bootstrap(final BootstrapContext<PlacedFeature> ctx) {
-        var configured = ctx.lookup(Registries.CONFIGURED_FEATURE);
+        var configured = ctx.lookup(Registries.FEATURE);
 
         ATMPlacedFeatures.register(ctx, ATMPlacedFeatures.OTHER_ORE_COAL, configured.getOrThrow(ATMConfiguredFeatures.ORE_COAL), ATMPlacedFeatures.ore(20, ATMPlacedFeatures.otherRange()));
         ATMPlacedFeatures.register(ctx, ATMPlacedFeatures.OTHER_ORE_COPPER, configured.getOrThrow(ATMConfiguredFeatures.ORE_COPPER_LARGE), ATMPlacedFeatures.ore(16, ATMPlacedFeatures.otherRange()));
@@ -124,7 +124,7 @@ public class ATMPlacedFeatures {
                         VerticalAnchor.absolute(10)
                 ),
                 ATMPlacedFeatures.scan(Direction.UP, Direction.DOWN),
-                RandomOffsetPlacement.vertical(ConstantInt.of(-1)),
+                OffsetPlacement.vertical(ConstantInt.of(-1)),
                 BiomeFilter.biome()
         );
         ATMPlacedFeatures.register(
@@ -147,7 +147,7 @@ public class ATMPlacedFeatures {
                         VerticalAnchor.absolute(127)
                 ),
                 ATMPlacedFeatures.scan(Direction.UP, Direction.DOWN),
-                RandomOffsetPlacement.vertical(ConstantInt.of(-1)),
+                OffsetPlacement.vertical(ConstantInt.of(-1)),
                 BiomeFilter.biome()
         );
         ATMPlacedFeatures.register(
@@ -161,7 +161,7 @@ public class ATMPlacedFeatures {
                         VerticalAnchor.absolute(40)
                 ),
                 ATMPlacedFeatures.scan(Direction.UP, Direction.DOWN),
-                RandomOffsetPlacement.vertical(ConstantInt.of(-1)),
+                OffsetPlacement.vertical(ConstantInt.of(-1)),
                 BiomeFilter.biome()
         );
         ATMPlacedFeatures.register(
@@ -175,7 +175,7 @@ public class ATMPlacedFeatures {
                         VerticalAnchor.absolute(128)
                 ),
                 ATMPlacedFeatures.scan(Direction.DOWN, Direction.UP),
-                RandomOffsetPlacement.vertical(ConstantInt.of(-1)),
+                OffsetPlacement.vertical(ConstantInt.of(-1)),
                 BiomeFilter.biome()
         );
         
@@ -461,7 +461,7 @@ public class ATMPlacedFeatures {
                         VerticalAnchor.absolute(256)
                 ),
                 ATMPlacedFeatures.scan(Direction.UP, Direction.DOWN),
-                RandomOffsetPlacement.vertical(ConstantInt.of(-1)),
+                OffsetPlacement.vertical(ConstantInt.of(-1)),
                 BiomeFilter.biome()
         );
         ATMPlacedFeatures.register(
@@ -541,7 +541,7 @@ public class ATMPlacedFeatures {
     private static void register(
             BootstrapContext<PlacedFeature> ctx,
             ResourceKey<PlacedFeature> key,
-            Holder<ConfiguredFeature<?, ?>> feature,
+            Holder<Feature> feature,
             PlacementModifier... modifiers
     ) {
         ATMPlacedFeatures.register(ctx, key, feature, List.of(modifiers));
@@ -550,7 +550,7 @@ public class ATMPlacedFeatures {
     private static void register(
             BootstrapContext<PlacedFeature> ctx,
             ResourceKey<PlacedFeature> key,
-            Holder<ConfiguredFeature<?, ?>> feature,
+            Holder<Feature> feature,
             List<PlacementModifier> modifiers
     ) {
         ctx.register(key, new PlacedFeature(feature, modifiers));

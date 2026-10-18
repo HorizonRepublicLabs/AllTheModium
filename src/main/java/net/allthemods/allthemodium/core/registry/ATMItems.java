@@ -9,13 +9,10 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.Unit;
-import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.HoeItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.MaceItem;
 import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.ShovelItem;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.item.component.ItemLore;
 import net.minecraft.world.item.component.Weapon;
@@ -106,9 +103,9 @@ public class ATMItems {
     
     public static final DeferredHolder<Item, Item> ALLTHEMODIUM_SWORD = ATMItems.register("allthemodium_sword", p -> new Item(p.sword(ATMToolMaterials.ALLTHEMODIUM, 5.0F, -1.5F).component(DataComponents.UNBREAKABLE, Unit.INSTANCE).fireResistant().rarity(Rarity.EPIC)));
     public static final DeferredHolder<Item, Item> ALLTHEMODIUM_PICKAXE = ATMItems.register("allthemodium_pickaxe", p -> new Item(p.pickaxe(ATMToolMaterials.ALLTHEMODIUM, 2.0F, -1.0F).component(DataComponents.UNBREAKABLE, Unit.INSTANCE).fireResistant().rarity(Rarity.EPIC)));
-    public static final DeferredHolder<Item, Item> ALLTHEMODIUM_AXE = ATMItems.register("allthemodium_axe", p -> new AxeItem(ATMToolMaterials.ALLTHEMODIUM, 9.0F, -3.2F, p.component(DataComponents.UNBREAKABLE, Unit.INSTANCE).fireResistant().rarity(Rarity.EPIC)));
-    public static final DeferredHolder<Item, Item> ALLTHEMODIUM_SHOVEL = ATMItems.register("allthemodium_shovel", p -> new ShovelItem(ATMToolMaterials.ALLTHEMODIUM, 2.0F, -1.0F, p.component(DataComponents.UNBREAKABLE, Unit.INSTANCE).fireResistant().rarity(Rarity.EPIC)));
-    public static final DeferredHolder<Item, Item> ALLTHEMODIUM_HOE = ATMItems.register("allthemodium_hoe", p -> new HoeItem(ATMToolMaterials.ALLTHEMODIUM, -3.0F, 0.0F, p.component(DataComponents.UNBREAKABLE, Unit.INSTANCE).fireResistant().rarity(Rarity.EPIC)));
+    public static final DeferredHolder<Item, Item> ALLTHEMODIUM_AXE = ATMItems.register("allthemodium_axe", p -> new Item(p.component(DataComponents.UNBREAKABLE, Unit.INSTANCE).fireResistant().rarity(Rarity.EPIC).axe(ATMToolMaterials.ALLTHEMODIUM, 9.0F, -3.2F)));
+    public static final DeferredHolder<Item, Item> ALLTHEMODIUM_SHOVEL = ATMItems.register("allthemodium_shovel", p -> new Item(p.component(DataComponents.UNBREAKABLE, Unit.INSTANCE).fireResistant().rarity(Rarity.EPIC).shovel(ATMToolMaterials.ALLTHEMODIUM, 2.0F, -1.0F)));
+    public static final DeferredHolder<Item, Item> ALLTHEMODIUM_HOE = ATMItems.register("allthemodium_hoe", p -> new Item(p.component(DataComponents.UNBREAKABLE, Unit.INSTANCE).fireResistant().rarity(Rarity.EPIC).hoe(ATMToolMaterials.ALLTHEMODIUM, -3.0F, 0.0F)));
     public static final DeferredHolder<Item, Item> ALLTHEMODIUM_MACE = ATMItems.register("allthemodium_mace", p -> new MaceItem(p
             .rarity(Rarity.EPIC)
             .durability(Short.MAX_VALUE)
@@ -123,9 +120,9 @@ public class ATMItems {
     
     public static final DeferredHolder<Item, Item> VIBRANIUM_SWORD = ATMItems.register("vibranium_sword", p -> new Item(p.sword(ATMToolMaterials.VIBRANIUM, 10.0F, -0.5F).component(DataComponents.UNBREAKABLE, Unit.INSTANCE).fireResistant().rarity(Rarity.EPIC)));
     public static final DeferredHolder<Item, Item> VIBRANIUM_PICKAXE = ATMItems.register("vibranium_pickaxe", p -> new Item(p.pickaxe(ATMToolMaterials.VIBRANIUM, 4.0F, -0.8F).component(DataComponents.UNBREAKABLE, Unit.INSTANCE).fireResistant().rarity(Rarity.EPIC)));
-    public static final DeferredHolder<Item, Item> VIBRANIUM_AXE = ATMItems.register("vibranium_axe", p -> new AxeItem(ATMToolMaterials.VIBRANIUM, 12.0F, -3.0F, p.component(DataComponents.UNBREAKABLE, Unit.INSTANCE).fireResistant().rarity(Rarity.EPIC)));
-    public static final DeferredHolder<Item, Item> VIBRANIUM_SHOVEL = ATMItems.register("vibranium_shovel", p -> new ShovelItem(ATMToolMaterials.VIBRANIUM, 4.0F, -0.8F, p.component(DataComponents.UNBREAKABLE, Unit.INSTANCE).fireResistant().rarity(Rarity.EPIC)));
-    public static final DeferredHolder<Item, Item> VIBRANIUM_HOE = ATMItems.register("vibranium_hoe", p -> new HoeItem(ATMToolMaterials.VIBRANIUM, -2.0F, 0.0F, p.component(DataComponents.UNBREAKABLE, Unit.INSTANCE).fireResistant().rarity(Rarity.EPIC)));
+    public static final DeferredHolder<Item, Item> VIBRANIUM_AXE = ATMItems.register("vibranium_axe", p -> new Item(p.component(DataComponents.UNBREAKABLE, Unit.INSTANCE).fireResistant().rarity(Rarity.EPIC).axe(ATMToolMaterials.VIBRANIUM, 12.0F, -3.0F)));
+    public static final DeferredHolder<Item, Item> VIBRANIUM_SHOVEL = ATMItems.register("vibranium_shovel", p -> new Item(p.component(DataComponents.UNBREAKABLE, Unit.INSTANCE).fireResistant().rarity(Rarity.EPIC).shovel(ATMToolMaterials.VIBRANIUM, 4.0F, -0.8F)));
+    public static final DeferredHolder<Item, Item> VIBRANIUM_HOE = ATMItems.register("vibranium_hoe", p -> new Item(p.component(DataComponents.UNBREAKABLE, Unit.INSTANCE).fireResistant().rarity(Rarity.EPIC).hoe(ATMToolMaterials.VIBRANIUM, -2.0F, 0.0F)));
     public static final DeferredHolder<Item, Item> VIBRANIUM_MACE = ATMItems.register("vibranium_mace", p -> new MaceItem(p
             .rarity(Rarity.EPIC)
             .durability(Short.MAX_VALUE)
@@ -140,9 +137,9 @@ public class ATMItems {
     
     public static final DeferredHolder<Item, Item> UNOBTAINIUM_SWORD = ATMItems.register("unobtainium_sword", p -> new Item(p.sword(ATMToolMaterials.UNOBTAINIUM, 15.0F, 0.5F).component(DataComponents.UNBREAKABLE, Unit.INSTANCE).fireResistant().rarity(Rarity.EPIC)));
     public static final DeferredHolder<Item, Item> UNOBTAINIUM_PICKAXE = ATMItems.register("unobtainium_pickaxe", p -> new Item(p.pickaxe(ATMToolMaterials.UNOBTAINIUM, 6.0F, -0.6F).component(DataComponents.UNBREAKABLE, Unit.INSTANCE).fireResistant().rarity(Rarity.EPIC)));
-    public static final DeferredHolder<Item, Item> UNOBTAINIUM_AXE = ATMItems.register("unobtainium_axe", p -> new AxeItem(ATMToolMaterials.UNOBTAINIUM, 15.0F, -2.8F, p.component(DataComponents.UNBREAKABLE, Unit.INSTANCE).fireResistant().rarity(Rarity.EPIC)));
-    public static final DeferredHolder<Item, Item> UNOBTAINIUM_SHOVEL = ATMItems.register("unobtainium_shovel", p -> new ShovelItem(ATMToolMaterials.UNOBTAINIUM, 6.0F, -0.6F, p.component(DataComponents.UNBREAKABLE, Unit.INSTANCE).fireResistant().rarity(Rarity.EPIC)));
-    public static final DeferredHolder<Item, Item> UNOBTAINIUM_HOE = ATMItems.register("unobtainium_hoe", p -> new HoeItem(ATMToolMaterials.UNOBTAINIUM, -1.0F, 0.0F, p.component(DataComponents.UNBREAKABLE, Unit.INSTANCE).fireResistant().rarity(Rarity.EPIC)));
+    public static final DeferredHolder<Item, Item> UNOBTAINIUM_AXE = ATMItems.register("unobtainium_axe", p -> new Item(p.component(DataComponents.UNBREAKABLE, Unit.INSTANCE).fireResistant().rarity(Rarity.EPIC).axe(ATMToolMaterials.UNOBTAINIUM, 15.0F, -2.8F)));
+    public static final DeferredHolder<Item, Item> UNOBTAINIUM_SHOVEL = ATMItems.register("unobtainium_shovel", p -> new Item(p.component(DataComponents.UNBREAKABLE, Unit.INSTANCE).fireResistant().rarity(Rarity.EPIC).shovel(ATMToolMaterials.UNOBTAINIUM, 6.0F, -0.6F)));
+    public static final DeferredHolder<Item, Item> UNOBTAINIUM_HOE = ATMItems.register("unobtainium_hoe", p -> new Item(p.component(DataComponents.UNBREAKABLE, Unit.INSTANCE).fireResistant().rarity(Rarity.EPIC).hoe(ATMToolMaterials.UNOBTAINIUM, -1.0F, 0.0F)));
     public static final DeferredHolder<Item, Item> UNOBTAINIUM_MACE = ATMItems.register("unobtainium_mace", p -> new MaceItem(p
             .rarity(Rarity.EPIC)
             .durability(Short.MAX_VALUE)
@@ -157,8 +154,8 @@ public class ATMItems {
     
     public static final DeferredHolder<Item, Item> ALLOY_SWORD = ATMItems.register("alloy_sword", p -> new Item(p.sword(ATMToolMaterials.ALLOY, 20.0F, 1.5F).component(DataComponents.UNBREAKABLE, Unit.INSTANCE).fireResistant().rarity(Rarity.EPIC)));
     public static final DeferredHolder<Item, Item> ALLOY_PICKAXE = ATMItems.register("alloy_pickaxe", p -> new Item(p.pickaxe(ATMToolMaterials.ALLOY, 8.0F, -0.4F).component(DataComponents.UNBREAKABLE, Unit.INSTANCE).fireResistant().rarity(Rarity.EPIC)));
-    public static final DeferredHolder<Item, Item> ALLOY_AXE = ATMItems.register("alloy_axe", p -> new AxeItem(ATMToolMaterials.ALLOY, 18.0F, -2.6F, p.component(DataComponents.UNBREAKABLE, Unit.INSTANCE).fireResistant().rarity(Rarity.EPIC)));
-    public static final DeferredHolder<Item, Item> ALLOY_SHOVEL = ATMItems.register("alloy_shovel", p -> new ShovelItem(ATMToolMaterials.ALLOY, 8.0F, -0.4F, p.component(DataComponents.UNBREAKABLE, Unit.INSTANCE).fireResistant().rarity(Rarity.EPIC)));
+    public static final DeferredHolder<Item, Item> ALLOY_AXE = ATMItems.register("alloy_axe", p -> new Item(p.component(DataComponents.UNBREAKABLE, Unit.INSTANCE).fireResistant().rarity(Rarity.EPIC).axe(ATMToolMaterials.ALLOY, 18.0F, -2.6F)));
+    public static final DeferredHolder<Item, Item> ALLOY_SHOVEL = ATMItems.register("alloy_shovel", p -> new Item(p.component(DataComponents.UNBREAKABLE, Unit.INSTANCE).fireResistant().rarity(Rarity.EPIC).shovel(ATMToolMaterials.ALLOY, 8.0F, -0.4F)));
     public static final DeferredHolder<Item, Item> ALLOY_PAXEL = ATMItems.register("alloy_paxel", p -> new PaxelItem(p
             .rarity(Rarity.EPIC)
             .tool(ATMToolMaterials.ALLOY, ATMTags.Blocks.MINEABLE_WITH_PAXEL, 12.0F, -0.6F, 2.0F)

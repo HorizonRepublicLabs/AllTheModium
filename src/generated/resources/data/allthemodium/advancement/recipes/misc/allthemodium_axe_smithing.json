@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "allthemodium:allthemodium_axe_smithing"
+        "recipes": "allthemodium:allthemodium_axe_smithing"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

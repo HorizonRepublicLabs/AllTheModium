@@ -20,6 +20,90 @@
         "sound": "minecraft:music.nether.basalt_deltas"
       }
     },
+    "minecraft:gameplay/natural_mob_spawns": {
+      "argument": {
+        "spawn_costs": {},
+        "spawns_by_category": {
+          "creature": [
+            {
+              "type": "minecraft:rabbit",
+              "count": {
+                "type": "minecraft:uniform",
+                "max_inclusive": 3,
+                "min_inclusive": 2
+              },
+              "weight": 4
+            }
+          ],
+          "monster": [
+            {
+              "type": "minecraft:spider",
+              "count": 4,
+              "weight": 100
+            },
+            {
+              "type": "minecraft:zombie",
+              "count": 4,
+              "weight": 19
+            },
+            {
+              "type": "minecraft:zombie_villager",
+              "count": 1,
+              "weight": 1
+            },
+            {
+              "type": "minecraft:wither_skeleton",
+              "count": {
+                "type": "minecraft:uniform",
+                "max_inclusive": 4,
+                "min_inclusive": 1
+              },
+              "weight": 140
+            },
+            {
+              "type": "minecraft:blaze",
+              "count": 2,
+              "weight": 100
+            },
+            {
+              "type": "minecraft:skeleton",
+              "count": 4,
+              "weight": 100
+            },
+            {
+              "type": "minecraft:creeper",
+              "count": 4,
+              "weight": 100
+            },
+            {
+              "type": "minecraft:enderman",
+              "count": {
+                "type": "minecraft:uniform",
+                "max_inclusive": 4,
+                "min_inclusive": 1
+              },
+              "weight": 10
+            },
+            {
+              "type": "minecraft:witch",
+              "count": 1,
+              "weight": 5
+            },
+            {
+              "type": "minecraft:husk",
+              "count": 4,
+              "weight": 80
+            },
+            {
+              "type": "minecraft:slime",
+              "count": 4,
+              "weight": 100
+            }
+          ]
+        }
+      },
+      "modifier": "overlay"
+    },
     "minecraft:visual/ambient_particles": [
       {
         "particle": {
@@ -65,90 +149,5 @@
     ]
   ],
   "has_precipitation": false,
-  "spawn_costs": {},
-  "spawners": {
-    "ambient": [],
-    "axolotls": [],
-    "creature": [
-      {
-        "type": "minecraft:rabbit",
-        "maxCount": 3,
-        "minCount": 2,
-        "weight": 4
-      }
-    ],
-    "misc": [],
-    "monster": [
-      {
-        "type": "minecraft:spider",
-        "maxCount": 4,
-        "minCount": 4,
-        "weight": 100
-      },
-      {
-        "type": "minecraft:zombie",
-        "maxCount": 4,
-        "minCount": 4,
-        "weight": 19
-      },
-      {
-        "type": "minecraft:zombie_villager",
-        "maxCount": 1,
-        "minCount": 1,
-        "weight": 1
-      },
-      {
-        "type": "minecraft:wither_skeleton",
-        "maxCount": 4,
-        "minCount": 1,
-        "weight": 140
-      },
-      {
-        "type": "minecraft:blaze",
-        "maxCount": 2,
-        "minCount": 2,
-        "weight": 100
-      },
-      {
-        "type": "minecraft:skeleton",
-        "maxCount": 4,
-        "minCount": 4,
-        "weight": 100
-      },
-      {
-        "type": "minecraft:creeper",
-        "maxCount": 4,
-        "minCount": 4,
-        "weight": 100
-      },
-      {
-        "type": "minecraft:enderman",
-        "maxCount": 4,
-        "minCount": 1,
-        "weight": 10
-      },
-      {
-        "type": "minecraft:witch",
-        "maxCount": 1,
-        "minCount": 1,
-        "weight": 5
-      },
-      {
-        "type": "minecraft:husk",
-        "maxCount": 4,
-        "minCount": 4,
-        "weight": 80
-      },
-      {
-        "type": "minecraft:slime",
-        "maxCount": 4,
-        "minCount": 4,
-        "weight": 100
-      }
-    ],
-    "underground_water_creature": [],
-    "water_ambient": [],
-    "water_creature": []
-  },
   "temperature": 2.0
 }

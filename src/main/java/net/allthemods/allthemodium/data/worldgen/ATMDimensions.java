@@ -1,5 +1,6 @@
 package net.allthemods.allthemodium.data.worldgen;
 
+import net.minecraft.util.ARGB;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
@@ -57,10 +58,10 @@ public class ATMDimensions {
                         DimensionType.Skybox.OVERWORLD,
                         CardinalLighting.Type.DEFAULT,
                         EnvironmentAttributeMap.builder()
-                                .set(EnvironmentAttributes.FOG_COLOR, 0xC0D8FF)
-                                .set(EnvironmentAttributes.SKY_COLOR, 0x6ED1FF)
-                                .set(EnvironmentAttributes.WATER_FOG_COLOR, 0x050533)
-                                .set(EnvironmentAttributes.AMBIENT_LIGHT_COLOR, 0x0A0A0A)
+                                .set(EnvironmentAttributes.FOG_COLOR, ARGB.vector3fFromRGB24(0xC0D8FF))
+                                .set(EnvironmentAttributes.SKY_COLOR, ARGB.vector3fFromRGB24(0x6ED1FF))
+                                .set(EnvironmentAttributes.WATER_FOG_COLOR, ARGB.vector3fFromRGB24(0x050533))
+                                .set(EnvironmentAttributes.AMBIENT_LIGHT_COLOR, ARGB.vector3fFromRGB24(0x0A0A0A))
                                 .build(),
                         timelines.getOrThrow(TimelineTags.IN_OVERWORLD),
                         Optional.of(clocks.getOrThrow(WorldClocks.OVERWORLD))
@@ -89,10 +90,10 @@ public class ATMDimensions {
                         EnvironmentAttributeMap.builder()
                                 .set(EnvironmentAttributes.RESPAWN_ANCHOR_WORKS, true)
                                 .set(EnvironmentAttributes.PIGLINS_ZOMBIFY, false)
-                                .set(EnvironmentAttributes.FOG_COLOR, 0xC0D8FF)
-                                .set(EnvironmentAttributes.SKY_COLOR, 0x6ED1FF)
-                                .set(EnvironmentAttributes.WATER_FOG_COLOR, 0x050533)
-                                .set(EnvironmentAttributes.AMBIENT_LIGHT_COLOR, 0x0A0A0A)
+                                .set(EnvironmentAttributes.FOG_COLOR, ARGB.vector3fFromRGB24(0xC0D8FF))
+                                .set(EnvironmentAttributes.SKY_COLOR, ARGB.vector3fFromRGB24(0x6ED1FF))
+                                .set(EnvironmentAttributes.WATER_FOG_COLOR, ARGB.vector3fFromRGB24(0x050533))
+                                .set(EnvironmentAttributes.AMBIENT_LIGHT_COLOR, ARGB.vector3fFromRGB24(0x0A0A0A))
                                 .build(),
                         timelines.getOrThrow(TimelineTags.IN_OVERWORLD),
                         Optional.of(clocks.getOrThrow(WorldClocks.OVERWORLD))
@@ -123,10 +124,10 @@ public class ATMDimensions {
                                 .set(EnvironmentAttributes.RESPAWN_ANCHOR_WORKS, true)
                                 .set(EnvironmentAttributes.PIGLINS_ZOMBIFY, false)
                                 .set(EnvironmentAttributes.SKY_LIGHT_LEVEL, 4.0F)
-                                .set(EnvironmentAttributes.FOG_COLOR, 0x330303)
-                                .set(EnvironmentAttributes.SKY_COLOR, 0x330303)
-                                .set(EnvironmentAttributes.WATER_FOG_COLOR, 0x330303)
-                                .set(EnvironmentAttributes.AMBIENT_LIGHT_COLOR, 0x0A0A0A)
+                                .set(EnvironmentAttributes.FOG_COLOR, ARGB.vector3fFromRGB24(0x330303))
+                                .set(EnvironmentAttributes.SKY_COLOR, ARGB.vector3fFromRGB24(0x330303))
+                                .set(EnvironmentAttributes.WATER_FOG_COLOR, ARGB.vector3fFromRGB24(0x330303))
+                                .set(EnvironmentAttributes.AMBIENT_LIGHT_COLOR, ARGB.vector3fFromRGB24(0x0A0A0A))
                                 .build(),
                         timelines.getOrThrow(TimelineTags.IN_NETHER),
                         Optional.empty()
