@@ -208,5 +208,9 @@
   "trim_material.allthemodium.vibranium": "ヴィブラニウム素材",
   "upgrade.allthemodium.allthemodium_upgrade": "Allthemodium強化",
   "upgrade.allthemodium.unobtainium_upgrade": "アンオブタニウム強化",
-  "upgrade.allthemodium.vibranium_upgrade": "ヴィブラニウム強化"
+  "upgrade.allthemodium.vibranium_upgrade": "ヴィブラニウム強化",
+  "item.allthemodium.unobtainium_brush": "アンオブタニウムのブラシ",
+  "item.allthemodium.allthemodium_brush": "Allthemodiumのブラシ",
+  "item.allthemodium.vibranium_brush": "ヴィブラニウムのブラシ",
+  "entity.allthemodium.alloy_trident": "Allthemodium合金のトライデント"
 }

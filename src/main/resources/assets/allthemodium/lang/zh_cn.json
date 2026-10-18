@@ -210,5 +210,9 @@
   "trim_material.allthemodium.vibranium": "振金",
   "upgrade.allthemodium.allthemodium_upgrade": "ATM升级",
   "upgrade.allthemodium.unobtainium_upgrade": "难得素升级",
-  "upgrade.allthemodium.vibranium_upgrade": "振金升级"
+  "upgrade.allthemodium.vibranium_upgrade": "振金升级",
+  "item.allthemodium.unobtainium_brush": "难得素刷子",
+  "item.allthemodium.allthemodium_brush": "ATM刷子",
+  "item.allthemodium.vibranium_brush": "振金刷子",
+  "biome.allthemodium.the_beyond": "彼岸"
 }
